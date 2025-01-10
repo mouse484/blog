@@ -40,7 +40,7 @@ GitHub や GitLab のページからすぐに使える使い捨ての VS Code �
 
 また、[Chrome 拡張機能](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki)をインストールし簡単にアクセスできるようにする方法もあります。（オススメ）
 
-![](gitpod-extention.png)
+![](extention.png)
 
 https://www.gitpod.io/docs/10_getting_started/
 
