@@ -3,7 +3,7 @@ title: ifreameが貫通するのを直すメモ
 tags:
   - css
   - html
-pubDate: 2019-10-16
+createdAt: 2019-10-16
 canonicalUrl: https://qiita.com/mouse_484/items/60f3c516d705bac60220
 ---
 

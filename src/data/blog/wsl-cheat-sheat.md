@@ -2,7 +2,7 @@
 title: "WSLチートシート"
 tags:
   - WSL
-pubDate: 2022-10-04
+createdAt: 2022-10-04
 canonicalUrl: https://zenn.dev/mouse_484/articles/wsl-cheat-sheat
 ---
 

@@ -2,7 +2,7 @@
 title: 'Rollupで警告を無視する'
 tags:
   - Rollup
-pubDate: 2021-05-09
+createdAt: 2021-05-09
 canonicalUrl: https://zenn.dev/mouse_484/articles/rollup-suppress-warning-messages
 ---
 

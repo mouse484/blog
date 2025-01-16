@@ -3,7 +3,7 @@ title: '[Vue.js] インラインスタイルを使用する'
 tags:
  - Vue.js
  - CSS
-pubDate: 2021-04-22
+createdAt: 2021-04-22
 canonicalUrl: https://zenn.dev/mouse_484/articles/vue-inline-style
 ---
 

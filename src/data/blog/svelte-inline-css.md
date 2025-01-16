@@ -3,7 +3,7 @@ title: 'SvelteでVue.jsみたいにインラインCSSを使うライブラリを
 tags:
   - Svelte
   - CSS
-pubDate: 2021-05-18
+createdAt: 2021-05-18
 canonicalUrl: https://zenn.dev/mouse_484/articles/svelte-inline-css
 ---
 

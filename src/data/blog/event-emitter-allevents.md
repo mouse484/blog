@@ -2,7 +2,7 @@
 title: EventEmitter の全てのイベントを取得する方法(Node.js)
 tags:
   - Node.js
-pubDate: 2022-01-15
+createdAt: 2022-01-15
 canonicalUrl: https://zenn.dev/mouse_484/articles/listen-to-all-events-of-eventemitter
 ---
 

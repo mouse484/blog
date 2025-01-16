@@ -2,7 +2,7 @@
 title: 'SvelteKit@1.0.0-next.359,374,405のアップデートメモ'
 tags:
   - SvelteKit
-pubDate: 2022-09-23
+createdAt: 2022-09-23
 canonicalUrl: https://zenn.dev/mouse_484/articles/sveltekit-100-next359-and-later
 ---
 

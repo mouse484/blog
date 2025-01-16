@@ -3,7 +3,7 @@ title: 'Gitpod + Zenn CLIを使ってクラウドIDEで記事作成'
 tags:
   - Gitpod
   - Zenn
-pubDate: 2020-09-21
+createdAt: 2020-09-21
 canonicalUrl: https://zenn.dev/mouse_484/articles/de0f41fca07259c60b08
 ---
 

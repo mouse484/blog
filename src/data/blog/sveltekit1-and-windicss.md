@@ -4,7 +4,7 @@ tags:
   - SvelteKit
   - Windi CSS
   - Vite
-pubDate: 2021-05-15
+createdAt: 2021-05-15
 canonicalUrl: https://zenn.dev/mouse_484/articles/sveltekit-and-windicss
 ---
 

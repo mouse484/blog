@@ -4,7 +4,7 @@ tags:
   - npm
   - semantic-release
   - GitHubActions
-pubDate: 2021-05-03
+createdAt: 2021-05-03
 canonicalUrl: https://zenn.dev/mouse_484/articles/semantic-release-githubactions-npm
 ---
 

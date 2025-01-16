@@ -20,7 +20,7 @@ const { Content } = await render(post)
   <article>
     <h1 transition:name={post.id}>{post.data.title}</h1>
     <div>
-      <p data-pagefind-meta="date">{post.data.pubDate?.toLocaleDateString()}</p>
+      <p data-pagefind-meta="date">{post.data.createdAt?.toLocaleDateString()}</p>
       <div>
         {
           post.data.tags?.map((tag) => {

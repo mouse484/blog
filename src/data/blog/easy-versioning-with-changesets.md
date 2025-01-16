@@ -4,7 +4,7 @@ tags:
   - Changesets
   - npm
   - monorepo
-pubDate: 2022-12-22
+createdAt: 2022-12-22
 canonicalUrl: https://zenn.dev/mouse_484/articles/easy-changesets
 ---
 

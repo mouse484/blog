@@ -4,7 +4,7 @@ tags:
   - Gitpod
   - VSCode
   - CloudIDE
-pubDate: 2019-04-06
+createdAt: 2019-04-06
 canonicalUrl: https://qiita.com/mouse_484/items/394a4984f749cc201422
 ---
 

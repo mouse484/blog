@@ -2,7 +2,7 @@
 title: Gitpod 2019/6リリースノート翻訳
 tags:
   - Gitpod
-pubDate: 2019-06-17
+createdAt: 2019-06-17
 canonicalUrl: https://qiita.com/mouse_484/items/f39fa1d5b8c770f85158
 ---
 

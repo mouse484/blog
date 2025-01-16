@@ -2,7 +2,7 @@
 title: 初心者による初心者のためのVue.js入門
 tags:
   - Vue.js
-pubDate: 2019-06-09
+createdAt: 2019-06-09
 canonicalUrl: https://qiita.com/mouse_484/items/a3e6d2e3eecf579190f2
 ---
 

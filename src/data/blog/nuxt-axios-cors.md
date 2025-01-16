@@ -5,7 +5,7 @@ tags:
   - Vue.js
   - Axios
   - CORS
-pubDate: 2021-04-20
+createdAt: 2021-04-20
 canonicalUrl: https://zenn.dev/mouse_484/articles/nuxt-axios-cors
 ---
 
