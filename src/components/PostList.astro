@@ -5,11 +5,15 @@ interface Props {
   posts: CollectionEntry<'blog'>[]
 }
 const { posts } = Astro.props
+
+const sortedPosts = posts.sort((a, b) => {
+  return (a.data.pubDate ?? 0) > (b.data.pubDate ?? 0) ? -1 : 1
+})
 ---
 
 <ul transition:animate="fade">
   {
-    posts.map((post) => (
+    sortedPosts.map((post) => (
       <li>
         <span>{(post.data.updateAt ?? post.data.pubDate)?.toLocaleDateString('ja-JP')}</span>
         <a href={`/posts/${post.id}`} transition:name={post.id}>
