@@ -1,0 +1,69 @@
+---
+import PageFindSearch from 'astro-pagefind/components/Search'
+import { Icon } from 'astro-icon/components'
+---
+
+<button>
+  <Icon name="mdi:magnify" />
+</button>
+
+<dialog>
+  <PageFindSearch
+    id="search"
+    className="pagefind-ui"
+    uiOptions={{ autofocus: true, showImages: false, showSubResults: true }}
+  />
+</dialog>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const button = document.querySelector('button')!
+    const dialog = document.querySelector('dialog')!
+
+    button.addEventListener('click', () => {
+      dialog.close()
+      dialog.showModal()
+    })
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        dialog.close()
+      }
+    })
+  })
+</script>
+
+<style>
+  button {
+    display: grid;
+    place-items: center;
+
+    padding: 0.2rem 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+
+    font-size: 1.5rem;
+    color: var(--on-secondary-container);
+
+    background-color: var(--secondary-container);
+  }
+
+  dialog {
+    width: 60%;
+    height: 80vh;
+    border-radius: 0.25rem;
+  }
+</style>
+
+<!-- <style is:global>
+  /* stylelint-disable selector-class-pattern */
+  .pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
+    position: absolute;
+    z-index: 9999;
+    right: 0;
+    left: 0;
+
+    overflow-y: auto;
+
+    width: 100dvw;
+  }
+</style> -->

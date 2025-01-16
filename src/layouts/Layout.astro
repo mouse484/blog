@@ -1,6 +1,12 @@
 ---
 import Header from '../components/Header.astro'
 import { ClientRouter } from 'astro:transitions'
+import '../styles/theme.css'
+
+interface Props {
+  pageTitle?: string
+}
+const { pageTitle } = Astro.props
 ---
 
 <!doctype html>
@@ -10,7 +16,9 @@ import { ClientRouter } from 'astro:transitions'
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>blog</title>
+    <title>
+      {pageTitle ? `${pageTitle} | ` : ''} blog
+    </title>
     <slot name="head" />
     <ClientRouter />
   </head>

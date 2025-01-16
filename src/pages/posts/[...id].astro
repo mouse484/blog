@@ -14,23 +14,26 @@ const { post } = Astro.props
 const { Content } = await render(post)
 ---
 
-<Layout>
+<Layout pageTitle={post.data.title}>
   {post.data.canonicalUrl && <link slot="head" rel="canonical" href={post.data.canonicalUrl} />}
 
   <article>
     <h1 transition:name={post.id}>{post.data.title}</h1>
     <div>
-      {
-        post.data.tags?.map((tag) => {
-          return (
-            <span>
-              <a href={tagToPath(tag)} transition:name={`tag-${tag}`}>
-                {tag}
-              </a>
-            </span>
-          )
-        })
-      }
+      <p data-pagefind-meta="date">{post.data.pubDate?.toLocaleDateString()}</p>
+      <div>
+        {
+          post.data.tags?.map((tag) => {
+            return (
+              <span>
+                <a href={tagToPath(tag)} transition:name={`tag-${tag}`}>
+                  {tag}
+                </a>
+              </span>
+            )
+          })
+        }
+      </div>
     </div>
     {
       post.data.canonicalUrl && (

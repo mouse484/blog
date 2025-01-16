@@ -1,5 +1,18 @@
+---
+import Search from './Search.astro'
+---
+
 <header>
-  <h1>
-    <a href="/">blog</a>
-  </h1>
+  <a href="/">blog</a>
+
+  <Search />
 </header>
+
+<style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+</style>
