@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  posts: CollectionEntry<'blog'>[]
+}
+const { posts } = Astro.props
+---
+
+<ul transition:animate="fade">
+  {
+    posts.map((post) => (
+      <li>
+        <span>{(post.data.updateAt ?? post.data.pubDate)?.toLocaleDateString('ja-JP')}</span>
+        <a href={`/posts/${post.id}`} transition:name={post.id}>
+          {post.data.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: grid;
+    gap: 1rem;
+  }
+
+  li {
+    display: grid;
+  }
+</style>

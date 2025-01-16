@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:css": "stylelint '**/*.{astro,css}'"
+    "lint:css": "stylelint '**/*.{astro,css}'",
+    "get:style": "cd src/styles && curl -O https://raw.githubusercontent.com/mouse484/portfolio/refs/heads/next/src/lib/styles/theme.css"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.11",

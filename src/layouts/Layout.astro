@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro'
+import { ClientRouter } from 'astro:transitions'
 ---
 
 <!doctype html>
@@ -11,10 +12,13 @@ import Header from '../components/Header.astro'
     <meta name="generator" content={Astro.generator} />
     <title>blog</title>
     <slot name="head" />
+    <ClientRouter />
   </head>
   <body>
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 
@@ -24,5 +28,11 @@ import Header from '../components/Header.astro'
     width: 100%;
     height: 100%;
     margin: 0;
+  }
+
+  main {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 2rem;
   }
 </style>

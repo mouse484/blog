@@ -1,36 +1,13 @@
 ---
 import { getCollection } from 'astro:content'
 import Layout from '../layouts/Layout.astro'
+import PostList from '../components/PostList.astro'
 
 const posts = await getCollection('blog')
 ---
 
 <Layout>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <span>{(post.data.updateAt ?? post.data.pubDate)?.toLocaleDateString('ja-JP')}</span>
-          <a href={`/${post.id}`}>{post.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <PostList posts={posts} />
 </Layout>
 
-<style>
-  li {
-    display: grid;
 
-    ::before {
-      content: '';
-
-      width: 1em;
-      height: 1em;
-      margin-right: 0.5em;
-      border-radius: 50%;
-
-      background-color: #333;
-    }
-  }
-</style>
