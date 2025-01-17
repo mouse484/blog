@@ -5,6 +5,7 @@ tags:
   - npm
   - monorepo
 createdAt: 2022-12-22
+updatedAt: 2023-01-05
 canonicalUrl: https://zenn.dev/mouse_484/articles/easy-changesets
 ---
 

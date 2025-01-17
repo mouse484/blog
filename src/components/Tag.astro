@@ -1,0 +1,27 @@
+---
+import { tagToPath } from '../utils/path'
+interface Props {
+  tag: string
+}
+const { tag } = Astro.props
+---
+
+<span>
+  <a href={tagToPath(tag)} transition:name={`tag-${tag}`}>
+    {tag}
+  </a>
+</span>
+
+<style>
+  span {
+    display: inline-block;
+
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+
+    font-size: 0.7rem;
+    color: var(--on-tertiary-container);
+
+    background-color: var(--tertiary-container);
+  }
+</style>

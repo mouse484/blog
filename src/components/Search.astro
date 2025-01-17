@@ -8,11 +8,9 @@ import { Icon } from 'astro-icon/components'
 </button>
 
 <dialog>
-  <PageFindSearch
-    id="search"
-    className="pagefind-ui"
-    uiOptions={{ autofocus: true, showImages: false, showSubResults: true }}
-  />
+  <div>
+    <PageFindSearch id="search" uiOptions={{ autofocus: true, showImages: false, showSubResults: true }} />
+  </div>
 </dialog>
 
 <script>
@@ -34,6 +32,8 @@ import { Icon } from 'astro-icon/components'
 
 <style>
   button {
+    cursor: pointer;
+
     display: grid;
     place-items: center;
 
@@ -48,22 +48,23 @@ import { Icon } from 'astro-icon/components'
   }
 
   dialog {
-    width: 60%;
-    height: 80vh;
-    border-radius: 0.25rem;
+    width: calc(100% - 4rem);
+    max-width: 768px;
+    height: calc(100dvh - 8rem);
+    border-radius: 0.5rem;
+
+    color: var(--on-secondary-container);
+
+    background-color: var(--secondary-container);
   }
 </style>
 
-<!-- <style is:global>
-  /* stylelint-disable selector-class-pattern */
-  .pagefind-ui .pagefind-ui__drawer:not(.pagefind-ui__hidden) {
-    position: absolute;
-    z-index: 9999;
-    right: 0;
-    left: 0;
-
-    overflow-y: auto;
-
-    width: 100dvw;
+<style is:global>
+  #search {
+    --pagefind-ui-primary: var(--on-primary-container);
+    --pagefind-ui-background: var(--secondary-container);
+    --pagefind-ui-text: var(--on-secondary-container);
+    --pagefind-ui-border: var(--outline);
+    --pagefind-ui-tag: var(--tertiary-container);
   }
-</style> -->
+</style>

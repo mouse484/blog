@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
-import { tagToPath } from '../../utils/path'
+import Tag from '../../components/Tag.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -24,13 +24,7 @@ const { Content } = await render(post)
       <div>
         {
           post.data.tags?.map((tag) => {
-            return (
-              <span>
-                <a href={tagToPath(tag)} transition:name={`tag-${tag}`}>
-                  {tag}
-                </a>
-              </span>
-            )
+            return <Tag tag={tag} />
           })
         }
       </div>
