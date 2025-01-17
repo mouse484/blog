@@ -1,0 +1,46 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Layout from '../../../layouts/Layout.astro'
+import PostList from '../../../components/PostList.astro'
+import { getCollection } from 'astro:content'
+import PageNation from '../../../components/PageNation.astro'
+import { escapeTag } from '../../../utils/path'
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const tags = new Map<string, string>()
+  const posts = (await getCollection('blog')).map((post) => {
+    return {
+      ...post,
+      tags: (post.data.tags ?? []).map((_tag) => {
+        const tag = escapeTag(_tag)
+        tags.set(tag, _tag)
+        return tag
+      }),
+    }
+  })
+  return [...tags].flatMap(([tag, rawName]) => {
+    const filterdPosts = posts.filter((post) => post.tags?.includes(tag))
+    return paginate(filterdPosts, {
+      pageSize: 5,
+      params: { tag },
+      props: { rawName },
+    })
+  })
+}) satisfies GetStaticPaths
+
+const { tag } = Astro.params
+const { page, rawName } = Astro.props
+---
+
+<Layout>
+  <h1 transition:name={`tag-${tag}`}>Tag: {rawName}</h1>
+  <PageNation page={page} />
+  <PostList posts={page.data} />
+  <PageNation page={page} />
+</Layout>
+
+<style>
+  h1 {
+    font-size: 1.8rem;
+  }
+</style>
