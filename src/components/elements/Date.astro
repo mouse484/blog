@@ -1,0 +1,38 @@
+---
+import { Icon } from 'astro-icon/components'
+import type { CollectionEntry } from 'astro:content'
+import dayjs from 'dayjs'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const dateFormatTemplate = 'YYYY.MM.DD'
+const { post } = Astro.props
+---
+
+<p>
+  {dayjs(post.data.createdAt).format(dateFormatTemplate)}
+  {
+    post.data.updatedAt && (
+      <span>
+        <Icon name="mdi:update" />
+        {dayjs(post.data.updatedAt).format(dateFormatTemplate)}
+      </span>
+    )
+  }
+</p>
+
+<style>
+  p {
+    display: flex;
+    gap: 2rem;
+  }
+
+  span {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+</style>

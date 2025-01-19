@@ -13,7 +13,9 @@ canonicalUrl: https://zenn.dev/mouse_484/articles/easy-changesets
 モノレポ対応しています。
 
 このあたりでおすすめされている
+
 https://turbo.build/repo/docs/handbook/publishing-packages/versioning-and-publishing
+
 https://pnpm.io/ja/using-changesets
 
 ## 以下の説明をこのまま使うための前提条件

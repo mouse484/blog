@@ -15,6 +15,10 @@ main {
   padding: 2rem;
 }
 
+h1 {
+  font-size: 1.8rem;
+}
+
 a {
   color: var(--primary-fixed-dim);
 }

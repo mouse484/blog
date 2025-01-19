@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content'
 import Layout from '../../layouts/Layout.astro'
-import Tag from '../../components/Tag.astro'
+import Tag from '../../components/elements/Tag.astro'
+import Date from '../../components/elements/Date.astro'
+import '../../styles/content.css'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -19,24 +21,22 @@ const { Content } = await render(post)
 
   <article>
     <h1 transition:name={post.id}>{post.data.title}</h1>
+    <Date post={post} />
     <div>
-      <p data-pagefind-meta="date">{post.data.createdAt?.toLocaleDateString()}</p>
-      <div>
-        {
-          post.data.tags?.map((tag) => {
-            return <Tag tag={tag} />
-          })
-        }
-      </div>
+      {
+        post.data.tags?.map((tag) => {
+          return <Tag tag={tag} />
+        })
+      }
     </div>
     {
       post.data.canonicalUrl && (
-        <p>
+        <aside>
           別サイトへ投稿していた記事を移動しました、
           <a href={post.data.canonicalUrl} target="_blank" rel="noopener noreferrer">
             元記事はこちら
           </a>
-        </p>
+        </aside>
       )
     }
     <section>
@@ -45,10 +45,17 @@ const { Content } = await render(post)
   </article>
 </Layout>
 
-<style is:global>
-  section {
-    img: {
-      width: 100%;
-    }
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  aside {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: var(--on-surface-variant);
+    background-color: var(--surface-variant);
   }
 </style>

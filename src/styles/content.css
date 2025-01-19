@@ -1,0 +1,12 @@
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  line-height: 2;
+  overflow-wrap: break-word;
+
+  img {
+    width: 100%;
+  }
+}

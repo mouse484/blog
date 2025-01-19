@@ -2,7 +2,8 @@
 import { Icon } from 'astro-icon/components'
 import type { CollectionEntry } from 'astro:content'
 import dayjs from 'dayjs'
-import Tag from './Tag.astro'
+import Tag from './elements/Tag.astro'
+import Date from './elements/Date.astro'
 
 interface Props {
   posts: CollectionEntry<'blog'>[]
@@ -12,23 +13,13 @@ const { posts } = Astro.props
 const sortedPosts = posts.sort((a, b) => {
   return (a.data.createdAt ?? 0) > (b.data.createdAt ?? 0) ? -1 : 1
 })
-
-const dateFormatTemplate = 'YYYY.MM.DD'
 ---
 
 <ul transition:animate="fade" data-pagefind-ignore>
   {
     sortedPosts.map((post) => (
       <li>
-        <p>
-          {dayjs(post.data.createdAt).format(dateFormatTemplate)}
-          {post.data.updatedAt && (
-            <span>
-              <Icon name="mdi:update" />
-              {dayjs(post.data.updatedAt).format(dateFormatTemplate)}
-            </span>
-          )}
-        </p>
+        <Date post={post} />
         <a href={`/posts/${post.id}`} transition:name={post.id}>
           {post.data.title}
         </a>
@@ -56,18 +47,6 @@ const dateFormatTemplate = 'YYYY.MM.DD'
     border-radius: 0.5rem;
 
     background-color: var(--surface-container-low);
-  }
-
-  li > p {
-    display: flex;
-    gap: 2rem;
-  }
-
-  li > p > span {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    font-size: 0.8rem;
   }
 
   li > div {
