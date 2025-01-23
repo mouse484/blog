@@ -1,0 +1,17 @@
+---
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
+import Element from './node/Element.astro'
+
+interface Props {
+  content: string
+}
+const { content } = Astro.props
+
+const prosessor = unified().use(remarkParse).use(remarkGfm)
+
+const root = await prosessor.parse(content)
+---
+
+<Element nodes={root.children} />

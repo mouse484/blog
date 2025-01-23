@@ -1,0 +1,53 @@
+---
+import type { RootContent } from 'mdast'
+import Heading from './Heading.astro'
+
+interface Props {
+  nodes: RootContent[]
+}
+const { nodes } = Astro.props
+---
+
+{
+  nodes.map((node) => {
+    switch (node.type) {
+      case 'text':
+        return node.value
+      case 'paragraph':
+        return (
+          <p>
+            <Astro.self nodes={node.children} />
+          </p>
+        )
+      case 'link':
+        return (
+          <a href={node.url}>
+            <Astro.self nodes={node.children} />
+          </a>
+        )
+      case 'heading':
+        return <Heading node={node} />
+      case 'list':
+        return (
+          <ul>
+            <Astro.self nodes={node.children} />
+          </ul>
+        )
+      case 'listItem':
+        return (
+          <li>
+            <Astro.self nodes={node.children} />
+          </li>
+        )
+      default:
+        return JSON.stringify(node)
+    }
+  })
+}
+
+<style>
+  ul {
+    margin-left: 1rem;
+    list-style-type: disc;
+  }
+</style>
