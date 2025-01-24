@@ -2,8 +2,9 @@
 import type { RootContent } from 'mdast'
 import Heading from './Heading.astro'
 import Code from './Code.astro'
-import List from './List/List.astro'
-import ListItem from './List/ListItem.astro'
+import List from './list/List.astro'
+import ListItem from './list/ListItem.astro'
+import ContainerDirective from './directive/ContainerDirective.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -30,7 +31,6 @@ const { nodes } = Astro.props
         )
       case 'heading':
         return <Heading node={node} />
-
       case 'list':
         return <List node={node} />
       case 'listItem':
@@ -46,6 +46,14 @@ const { nodes } = Astro.props
           <blockquote>
             <Astro.self nodes={node.children} />
           </blockquote>
+        )
+      case 'containerDirective':
+        return <ContainerDirective node={node} />
+      case 'strong':
+        return (
+          <strong>
+            <Astro.self nodes={node.children} />
+          </strong>
         )
       default:
         return JSON.stringify(node)
@@ -71,5 +79,9 @@ const { nodes } = Astro.props
     padding-left: 1rem;
     border-left: 2px solid #ccc;
     font-style: italic;
+  }
+
+  strong {
+    font-weight: bold;
   }
 </style>

@@ -1,0 +1,50 @@
+---
+import type { ContainerDirective } from 'mdast-util-directive'
+import Element from '../Element.astro'
+import { icons } from '@iconify-json/mdi/index.js'
+import { Icon } from 'astro-icon/components'
+import { optional } from 'astro:schema'
+
+interface Props {
+  node: ContainerDirective
+}
+const { node } = Astro.props
+
+const type = node.name as keyof typeof list
+
+const list = {
+  message: {
+    color: 'var(--primary-container)',
+    icon: 'mdi:message-alert',
+  },
+} satisfies {
+  [key: string]: { color: string; icon: string }
+}
+
+const options = list[type]
+---
+
+<aside style={{ '--color': options.color }}>
+  <Icon name={options.icon} />
+  <Element nodes={node.children} />
+</aside>
+
+<style>
+  aside {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+
+    padding: 1rem;
+    border: 1px solid var(--color);
+    border-radius: 0.5rem;
+
+    font-size: 0.95em;
+  }
+
+  svg {
+    flex-shrink: 0;
+    font-size: 1.5em;
+    color: var(--color);
+  }
+</style>
