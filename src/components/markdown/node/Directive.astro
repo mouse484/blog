@@ -1,12 +1,10 @@
 ---
-import type { ContainerDirective } from 'mdast-util-directive'
-import Element from '../Element.astro'
-import { icons } from '@iconify-json/mdi/index.js'
+import type { Directive } from 'mdast'
 import { Icon } from 'astro-icon/components'
-import { optional } from 'astro:schema'
+import Element from './Element.astro'
 
 interface Props {
-  node: ContainerDirective
+  node: Directive
 }
 const { node } = Astro.props
 
@@ -26,7 +24,9 @@ const options = list[type]
 
 <aside style={{ '--color': options.color }}>
   <Icon name={options.icon} />
-  <Element nodes={node.children} />
+  <div>
+    <Element nodes={node.children} />
+  </div>
 </aside>
 
 <style>

@@ -4,7 +4,7 @@ import Heading from './Heading.astro'
 import Code from './Code.astro'
 import List from './list/List.astro'
 import ListItem from './list/ListItem.astro'
-import ContainerDirective from './directive/ContainerDirective.astro'
+import Directive from './Directive.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -52,14 +52,20 @@ const { nodes } = Astro.props
             <Astro.self nodes={node.children} />
           </blockquote>
         )
-      case 'containerDirective':
-        return <ContainerDirective node={node} />
       case 'strong':
         return (
           <strong>
             <Astro.self nodes={node.children} />
           </strong>
         )
+      case 'delete':
+        return (
+          <del>
+            <Astro.self nodes={node.children} />
+          </del>
+        )
+      case 'directive':
+        return <Directive node={node} />
       default:
         return JSON.stringify(node)
     }
@@ -88,5 +94,9 @@ const { nodes } = Astro.props
 
   strong {
     font-weight: bold;
+  }
+
+  del {
+    text-decoration: line-through;
   }
 </style>
