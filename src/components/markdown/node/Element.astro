@@ -5,6 +5,7 @@ import Code from './Code.astro'
 import List from './list/List.astro'
 import ListItem from './list/ListItem.astro'
 import Directive from './Directive.astro'
+import HTML from './HTML.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -66,6 +67,8 @@ const { nodes } = Astro.props
         )
       case 'directive':
         return <Directive node={node} />
+      case 'html':
+        return <HTML node={node} />
       default:
         return JSON.stringify(node)
     }
