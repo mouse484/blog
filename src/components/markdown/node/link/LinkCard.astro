@@ -1,9 +1,12 @@
 ---
 import { parse } from 'node-html-parser'
+import type { LinkCard } from 'mdast'
 interface Props {
-  href: string
+  node: LinkCard
 }
-const { href } = Astro.props
+const { node } = Astro.props
+
+const href = node.url
 
 const response = await fetch(href)
 const raw = await response.text()
@@ -17,28 +20,30 @@ const image = document.querySelector('meta[property="og:image"]')?.getAttribute(
 ---
 
 <div class="card">
-  <div>
-    <p>{title}</p>
-    <p class="description">
-      {description.slice(0, 100)}
-    </p>
-    <p class="meta">
-      {favicon && <img src={new URL(favicon, origin).href} class="favicon" alt={`${origin} favicon`} />}
-      <span>{origin}</span>
-    </p>
-  </div>
-  {image && <img class="og-image" src={new URL(image, origin).href} alt={`${title} og image`} />}
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    <div>
+      <p>{title}</p>
+      <p class="description">
+        {description.slice(0, 100)}
+      </p>
+      <p class="meta">
+        {favicon && <img src={new URL(favicon, origin).href} class="favicon" alt={`${origin} favicon`} />}
+        <span>{origin}</span>
+      </p>
+    </div>
+    {image && <img class="og-image" src={new URL(image, origin).href} alt={`${title} og image`} />}
+  </a>
 </div>
 
 <style>
-  .card {
+  .card > a {
     display: flex;
     height: 8rem;
     border: 1px solid var(--outline);
     border-radius: 0.5rem;
   }
 
-  .card > div {
+  .card > a > div {
     display: grid;
     grid-template-rows: auto 1fr auto;
     flex: 1;
@@ -49,7 +54,7 @@ const image = document.querySelector('meta[property="og:image"]')?.getAttribute(
     border-bottom-left-radius: 0.5rem;
   }
 
-  .card:hover > div {
+  .card:hover > a > div {
     background-color: color-mix(in srgb, var(--surface), #fff 5%);
   }
 

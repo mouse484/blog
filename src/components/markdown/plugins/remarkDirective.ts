@@ -18,7 +18,7 @@ const REGEX = /:::(?<name>[a-z]+)?(\s(?<title>\n+))?/
 
 export const remarkDirective: Plugin<[], Root> = () => {
   return (tree) => {
-    visit(tree, 'paragraph', (node, index, parent) => {
+    visit(tree, 'paragraph', (node) => {
       if (!node.children) {
         return 'skip'
       }
@@ -49,7 +49,7 @@ export const remarkDirective: Plugin<[], Root> = () => {
         }),
       } satisfies Directive
 
-      parent!.children.splice(index ?? 0, 1, directiveNode)
+      Object.assign(node, directiveNode)
     })
   }
 }

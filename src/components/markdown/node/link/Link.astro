@@ -1,27 +1,14 @@
 ---
 import type { Link } from 'mdast'
-import { toString } from 'mdast-util-to-string'
 import Element from '../Element.astro'
-import LinkCard from './LinkCard.astro'
 interface Props {
   node: Link
 }
 const { node } = Astro.props
 
 const href = node.url
-
-const isAutoLink = toString(node.children) === href
-const Tag = isAutoLink ? 'div' : Fragment
 ---
 
-<Tag>
-  <a href={href} target="_blank" rel="noopener noreferrer">
-    {isAutoLink ? <LinkCard href={href} /> : <Element nodes={node.children} />}
-  </a>
-</Tag>
-
-<style>
-  div > a {
-    color: inherit;
-  }
-</style>
+<a href={href} target="_blank" rel="noopener noreferrer">
+  <Element nodes={node.children} />}
+</a>
