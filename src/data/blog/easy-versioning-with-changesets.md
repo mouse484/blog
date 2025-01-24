@@ -33,11 +33,11 @@ Changesets は変更に対してフラグをつけてそのフラグをまとめ
 
 ## 1. インストール
 
-```
+```sh
 yarn add -D @changesets/cli
 ```
 
-```
+```sh
 yarn changeset init
 ```
 
@@ -76,13 +76,11 @@ GitHub のリポジトリ設定から actions のところに`NPM_TOKEN`とい�
 
 追加でインストールしてから設定の`changelog`を書き換える。
 
-```
+```sh
 yarn add -D @changesets/changelog-github
 ```
 
-.changeset/config.json
-
-```json
+```json:.changeset/config.json
 {
   "changelog": ["@changesets/changelog-github", { "repo": "<org>/<repo>" }]
 }

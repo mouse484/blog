@@ -1,6 +1,7 @@
 ---
 import type { RootContent } from 'mdast'
 import Heading from './Heading.astro'
+import Code from './Code.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -39,6 +40,11 @@ const { nodes } = Astro.props
             <Astro.self nodes={node.children} />
           </li>
         )
+      case 'code':
+        return <Code node={node} />
+
+      case 'image':
+        return <img src={node.url} alt={node.alt} />
       default:
         return JSON.stringify(node)
     }
