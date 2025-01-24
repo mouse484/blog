@@ -6,6 +6,7 @@ import List from './list/List.astro'
 import ListItem from './list/ListItem.astro'
 import Directive from './Directive.astro'
 import HTML from './HTML.astro'
+import Link from './link/link.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -30,11 +31,7 @@ const { nodes } = Astro.props
           </p>
         )
       case 'link':
-        return (
-          <a href={node.url}>
-            <Astro.self nodes={node.children} />
-          </a>
-        )
+        return <Link node={node} />
       case 'heading':
         return <Heading node={node} />
       case 'list':
