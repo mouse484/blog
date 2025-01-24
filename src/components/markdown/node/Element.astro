@@ -2,6 +2,8 @@
 import type { RootContent } from 'mdast'
 import Heading from './Heading.astro'
 import Code from './Code.astro'
+import List from './List/List.astro'
+import ListItem from './List/ListItem.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -28,23 +30,23 @@ const { nodes } = Astro.props
         )
       case 'heading':
         return <Heading node={node} />
+
       case 'list':
-        return (
-          <ul>
-            <Astro.self nodes={node.children} />
-          </ul>
-        )
+        return <List node={node} />
       case 'listItem':
-        return (
-          <li>
-            <Astro.self nodes={node.children} />
-          </li>
-        )
+        return <ListItem node={node} />
       case 'code':
         return <Code node={node} />
-
+      case 'inlineCode':
+        return <code>{node.value}</code>
       case 'image':
         return <img src={node.url} alt={node.alt} />
+      case 'blockquote':
+        return (
+          <blockquote>
+            <Astro.self nodes={node.children} />
+          </blockquote>
+        )
       default:
         return JSON.stringify(node)
     }
@@ -52,8 +54,22 @@ const { nodes } = Astro.props
 }
 
 <style>
-  ul {
+  code {
+    user-select: all;
+
+    margin: 0 0.2rem;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+
+    color: var(--on-secondary-container);
+
+    background-color: var(--secondary-container);
+  }
+
+  blockquote {
     margin-left: 1rem;
-    list-style-type: disc;
+    padding-left: 1rem;
+    border-left: 2px solid #ccc;
+    font-style: italic;
   }
 </style>
