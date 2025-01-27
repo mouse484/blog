@@ -7,7 +7,11 @@ interface Props {
 }
 const { node } = Astro.props
 
+console.log(node.value)
+
 const html = DOMPurify.sanitize(node.value)
 ---
 
-<Fragment set:html={html} />
+<div>
+  <Fragment set:html={html} />
+</div>

@@ -9,21 +9,29 @@ interface Props {
 const { node } = Astro.props
 
 const type = node.name as keyof typeof list
+const title = node.title ?? type
 
 const list = {
   message: {
-    color: 'var(--primary-container)',
+    color: 'var( --primary)',
     icon: 'mdi:message-alert',
+  },
+  details: {
+    color: 'var(--secondary)',
+    icon: 'mdi:information',
   },
 } satisfies {
   [key: string]: { color: string; icon: string }
 }
 
-const options = list[type]
+const options = list[type] ?? list['message']
 ---
 
 <aside style={{ '--color': options.color }}>
-  <Icon name={options.icon} />
+  <span>
+    <Icon name={options.icon} />
+    {title}
+  </span>
   <div>
     <Element nodes={node.children} />
   </div>
@@ -31,20 +39,28 @@ const options = list[type]
 
 <style>
   aside {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-
+    margin: 1rem 0;
     padding: 1rem;
     border: 1px solid var(--color);
-    border-radius: 0.5rem;
+    border-radius: 0.5em;
 
     font-size: 0.95em;
   }
 
-  svg {
+  span {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  span > svg {
     flex-shrink: 0;
     font-size: 1.5em;
     color: var(--color);
+  }
+
+  div {
+    padding-top: 1rem;
+    padding-left: 0.5rem;
   }
 </style>

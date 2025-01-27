@@ -1,4 +1,4 @@
-import type { Directive, Root } from 'mdast'
+import type { Directive, Root, Text } from 'mdast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
@@ -14,42 +14,41 @@ declare module 'mdast' {
   }
 }
 
-const REGEX = /:::(?<name>[a-z]+)?(\s(?<title>\n+))?/
+const REGEX = /:::(?<name>\w+)(?:\s+(?<title>.*))?/
 
 export const remarkDirective: Plugin<[], Root> = () => {
-  return (tree) => {
-    visit(tree, 'paragraph', (node) => {
-      if (!node.children) {
-        return 'skip'
-      }
-      const [first] = node.children
-      if (first.type !== 'text') {
-        return 'skip'
-      }
-      const text = first.value ?? ''
-      const match = text.match(REGEX)
-      if (!match) {
-        return 'skip'
-      }
-      const name = match.groups?.name ?? ''
-      const title = match.groups?.title
+  return (tree: Root) => {
+    visit(tree, 'text', (node: Text, index, parent) => {
+      const match = REGEX.exec(node.value)
 
-      const directiveNode = {
-        type: 'directive',
-        name,
-        title,
-        children: node.children.map((child) => {
-          if (child.type === 'text') {
-            return {
-              ...child,
-              value: child.value?.replace(REGEX, '').trim(),
-            }
+      if (match && parent && typeof index === 'number') {
+        const directiveNode: Directive = {
+          type: 'directive',
+          name: match.groups?.name ?? '',
+          title: match.groups?.title ?? undefined,
+          children: [],
+        }
+
+        const findEnd = (startIndex: number): number => {
+          if (startIndex >= parent.children.length) {
+            return -1
           }
-          return child
-        }),
-      } satisfies Directive
+          const sibling = parent.children[startIndex]
+          if (sibling.type === 'text' && sibling.value.trim().match(':::')) {
+            directiveNode.children.push(sibling)
+            sibling.value = sibling.value.replace(':::', '')
+            return startIndex
+          }
+          directiveNode.children.push(sibling)
+          return findEnd(startIndex + 1)
+        }
 
-      Object.assign(node, directiveNode)
+        const endIndex = findEnd(index + 1)
+        if (endIndex === -1) {
+          return 'skip'
+        }
+        parent.children.splice(index, endIndex - index + 1, directiveNode)
+      }
     })
   }
 }
