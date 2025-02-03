@@ -65,6 +65,8 @@ const { nodes } = Astro.props
             <Astro.self nodes={node.children} />
           </del>
         )
+      case 'thematicBreak':
+        return <hr />
       case 'directive':
         return <Directive node={node} />
       case 'html':
@@ -101,5 +103,10 @@ const { nodes } = Astro.props
 
   del {
     text-decoration: line-through;
+  }
+
+  hr {
+    margin: 1rem 0;
+    border-top: 1px solid var(--outline-variant);
   }
 </style>
