@@ -1,0 +1,18 @@
+---
+import Element from '../Element.astro'
+import type { ListItem } from 'mdast'
+interface Props {
+  node: ListItem
+}
+const { node } = Astro.props
+---
+
+<li>
+  <Element nodes={node.children} />
+</li>
+
+<style>
+  li::marker {
+    color: var(--on-surface-variant);
+  }
+</style>

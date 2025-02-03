@@ -33,11 +33,11 @@ Changesets は変更に対してフラグをつけてそのフラグをまとめ
 
 ## 1. インストール
 
-```
+```sh
 yarn add -D @changesets/cli
 ```
 
-```
+```sh
 yarn changeset init
 ```
 
@@ -76,13 +76,11 @@ GitHub のリポジトリ設定から actions のところに`NPM_TOKEN`とい�
 
 追加でインストールしてから設定の`changelog`を書き換える。
 
-```
+```sh
 yarn add -D @changesets/changelog-github
 ```
 
-.changeset/config.json
-
-```json
+```json:.changeset/config.json
 {
   "changelog": ["@changesets/changelog-github", { "repo": "<org>/<repo>" }]
 }
@@ -95,13 +93,13 @@ https://github.com/changesets/changesets/blob/main/docs/config-file-options.md#c
 ここまでで設定は終わりです。
 実際のリリースの手順です。
 
-- 1. コードを書く
-- 2. `yarn changeset`を実行する
-- 3. monorepo なら更新してるものを選択
-- 4. semver の`major`,`minor`,`patch`を選択
-- 5. コードと`.changeset/*`に生成されるマークダウンをまとめてコミット
-- 6. PR をマージ。このとき Bot のメッセージで`🦋 Changeset detected`となってることを確認してください。
-- 7. まだリリースはされていません、リリースするためにはリリース用の PR(Version Packages)をマージします。
+1. コードを書く
+2. `yarn changeset`を実行する
+3. monorepo なら更新してるものを選択
+4. semver の`major`,`minor`,`patch`を選択
+5. コードと`.changeset/*`に生成されるマークダウンをまとめてコミット
+6. PR をマージ。このとき Bot のメッセージで`🦋 Changeset detected`となってることを確認してください。
+7. まだリリースはされていません、リリースするためにはリリース用の PR(Version Packages)をマージします。
 
 これでリリースまで完成です、npm と GitHub の release に追加されているはずです。
 :::message

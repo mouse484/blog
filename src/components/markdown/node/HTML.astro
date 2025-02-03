@@ -1,0 +1,15 @@
+---
+import DOMPurify from 'isomorphic-dompurify'
+import type { Html } from 'mdast'
+
+interface Props {
+  node: Html
+}
+const { node } = Astro.props
+
+const html = DOMPurify.sanitize(node.value)
+---
+
+<div>
+  <Fragment set:html={html} />
+</div>

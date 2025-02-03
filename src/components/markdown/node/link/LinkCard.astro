@@ -1,0 +1,91 @@
+---
+import { parse } from 'node-html-parser'
+import type { LinkCard } from 'mdast'
+interface Props {
+  node: LinkCard
+}
+const { node } = Astro.props
+
+const href = node.url
+
+const response = await fetch(href)
+const raw = await response.text()
+const document = parse(raw)
+
+const title = document.querySelector('title')?.textContent ?? href
+const origin = new URL(href).origin
+const favicon = document.querySelector('link[rel="icon"]')?.getAttribute('href')
+const description = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? ''
+const image = document.querySelector('meta[property="og:image"]')?.getAttribute('content')
+---
+
+<div class="card">
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    <div>
+      <p>{title}</p>
+      <p class="description">
+        {description.slice(0, 100)}
+      </p>
+      <p class="meta">
+        {favicon && <img src={new URL(favicon, origin).href} class="favicon" alt={`${origin} favicon`} />}
+        <span>{origin}</span>
+      </p>
+    </div>
+    {image && <img class="og-image" src={new URL(image, origin).href} alt={`${title} og image`} />}
+  </a>
+</div>
+
+<style>
+  .card > a {
+    display: flex;
+    height: 8rem;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+  }
+
+  .card > a > div {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    flex: 1;
+
+    min-width: 0;
+    padding: 1em;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .card:hover > a > div {
+    background-color: color-mix(in srgb, var(--surface), #fff 5%);
+  }
+
+  p {
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  p:not(:first-of-type) {
+    font-size: 0.7rem;
+  }
+
+  .meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .favicon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .og-image {
+    width: auto;
+    height: 100%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    object-fit: cover;
+  }
+</style>

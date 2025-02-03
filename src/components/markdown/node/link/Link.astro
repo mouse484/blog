@@ -1,0 +1,14 @@
+---
+import type { Link } from 'mdast'
+import Element from '../Element.astro'
+interface Props {
+  node: Link
+}
+const { node } = Astro.props
+
+const href = node.url
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer">
+  <Element nodes={node.children} />
+</a>

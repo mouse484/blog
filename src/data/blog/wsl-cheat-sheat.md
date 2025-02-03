@@ -10,7 +10,7 @@ canonicalUrl: https://zenn.dev/mouse_484/articles/wsl-cheat-sheat
 
 ### 一覧表示
 
-```
+```sh
 wsl -l -v
 ```
 
@@ -25,11 +25,11 @@ wsl -l -v
 
 ### wsl を終了
 
-```:すべて
+```sh:すべて
 wsl --shutdown
 ```
 
-```:特定のディストリビューション
+```sh:特定のディストリビューション
 wsl --terminate <ディストリビューション>
 ```
 
@@ -39,7 +39,7 @@ wsl --terminate <ディストリビューション>
 
 ### ディストリビューションを追加
 
-```
+```sh
 wsl -d <ディストリビューション>
 ```
 
@@ -47,7 +47,7 @@ wsl -d <ディストリビューション>
 
 ### インストールできるディストリビューションを確認
 
-```
+```sh
 wsl --l --o
 ```
 
@@ -67,13 +67,13 @@ Ubuntu-20.04    Ubuntu 20.04 LTS
 
 ### ディストリビューションを削除
 
-```
+```sh
 wsl --unregister <ディストリビューション>
 ```
 
 ### WSL のバージョンを変える
 
-```
+```sh
 wsl --set-version <ディストリビューション> <バージョン 1 or 2>
 ```
 
@@ -96,7 +96,7 @@ https://zenn.dev/taiga533/articles/11f1b21ef4a5ff
 Systemd を PID=1 で使えるようにしないとだめ。
 以下を実行すれば OK。
 
-```
+```sh
 $ /usr/libexec/wsl-systemd
 $ /usr/libexec/nslogin
 ```

@@ -1,0 +1,51 @@
+---
+import type { Heading } from 'mdast'
+import Element from './Element.astro'
+import { toString } from 'mdast-util-to-string'
+import type { HTMLTag } from 'astro/types'
+
+interface Props {
+  node: Heading
+}
+const { node } = Astro.props
+
+const level = node.depth
+const Tag: HTMLTag = `h${level}`
+const id = toString(node)
+---
+
+<Tag id={id}>
+  <a href={`#${id}`}>{'#'.repeat(level)}</a>
+  <Element nodes={node.children} />
+</Tag>
+
+<style>
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+  }
+
+  h6 {
+    font-size: 1.1rem;
+  }
+
+  a,
+  a:visited {
+    color: var(--on-surface-variant);
+  }
+</style>
