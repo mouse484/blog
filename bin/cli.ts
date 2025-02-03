@@ -1,9 +1,20 @@
+import type { Literal } from 'mdast'
+import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 import { Command } from 'commander'
 import dayjs from 'dayjs'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
+import { unified } from 'unified'
+import { visit } from 'unist-util-visit'
+
 import YAML from 'yaml'
+
+const program = new Command()
+program.name('blog-util')
 
 const BLOG_DIRECTORY = path.join(process.cwd(), 'src/data/blog')
 const TODAY = dayjs().format('YYYY-MM-DD')
@@ -36,9 +47,6 @@ const baseFromtmatter = YAML.stringify({
   createdAt: TODAY,
 })
 
-const program = new Command()
-program.name('blog-util')
-
 program
   .command('create')
   .alias('c')
@@ -63,6 +71,40 @@ program
     const content = `---\n${baseFromtmatter}---\n\n`
 
     await fs.writeFile(fullPath, content)
+  })
+
+function getChangedFiles() {
+  return execSync(`git diff --name-only ${BLOG_DIRECTORY}`).toString().split('\n').filter(Boolean)
+}
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkFrontmatter)
+  .use(() => {
+    return (tree) => {
+      visit(tree, 'yaml', (node: Literal) => {
+        const data = YAML.parse(node.value) as Record<string, unknown>
+        data.updatedAt = TODAY
+        node.value = YAML.stringify(data, {}).trim()
+      })
+    }
+  })
+  .use(remarkStringify)
+
+program
+  .command('update')
+  .alias('u')
+  .description('ブログディレクトリの変更を検知する')
+  .action(async () => {
+    const changedFiles = getChangedFiles()
+    if (!changedFiles.length) {
+      return console.log('変更はありません')
+    }
+
+    for (const fullPath of changedFiles) {
+      const content = await fs.readFile(fullPath, 'utf-8')
+      const processed = await processor.process(content)
+      await fs.writeFile(fullPath, processed.toString())
+    }
   })
 
 program.parse()
