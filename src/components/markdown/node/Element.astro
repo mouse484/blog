@@ -59,6 +59,12 @@ const { nodes } = Astro.props
             <Astro.self nodes={node.children} />
           </strong>
         )
+      case 'emphasis':
+        return (
+          <em>
+            <Astro.self nodes={node.children} />
+          </em>
+        )
       case 'delete':
         return (
           <del>
