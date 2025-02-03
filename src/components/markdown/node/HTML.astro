@@ -7,8 +7,6 @@ interface Props {
 }
 const { node } = Astro.props
 
-console.log(node.value)
-
 const html = DOMPurify.sanitize(node.value)
 ---
 
