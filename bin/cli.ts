@@ -42,7 +42,7 @@ async function getExistingSlugs(dir: string) {
 
 const baseFromtmatter = YAML.stringify({
   title: '',
-  tags: [],
+  tags: [''],
   description: '',
   createdAt: TODAY,
 })
@@ -71,6 +71,8 @@ program
     const content = `---\n${baseFromtmatter}---\n\n`
 
     await fs.writeFile(fullPath, content)
+
+    await execSync(`code ${fullPath}`)
   })
 
 function getChangedFiles() {
