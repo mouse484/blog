@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "lint:css": "stylelint '**/*.{astro,css}' --ignore-path .gitignore",
     "get:style": "cd src/styles && curl -O https://raw.githubusercontent.com/mouse484/portfolio/refs/heads/next/src/lib/styles/theme.css",
-    "cli": "tsx bin/cli.ts",
+    "cli": "tsx bin/cli",
     "prepare": "husky"
   },
   "dependencies": {
