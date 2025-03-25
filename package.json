@@ -28,7 +28,7 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
-    "@mouse_484/eslint-config": "3.5.8",
+    "@mouse_484/eslint-config": "3.5.9",
     "@mouse_484/stylelint-config": "1.0.4",
     "astro-eslint-parser": "1.2.2",
     "commander": "13.1.0",
