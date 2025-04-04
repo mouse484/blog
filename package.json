@@ -22,7 +22,7 @@
     "astro-pagefind": "^1.8.3",
     "dayjs": "^1.11.13",
     "expressive-code": "^0.40.2",
-    "isomorphic-dompurify": "^2.22.0",
+    "isomorphic-dompurify": "^2.23.0",
     "node-html-parser": "^7.0.1",
     "the-new-css-reset": "^1.11.3",
     "unified": "^11.0.5"
