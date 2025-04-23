@@ -42,9 +42,9 @@ import { Icon } from 'astro-icon/components'
     border-radius: 0.25rem;
 
     font-size: 1.5rem;
-    color: var(--on-secondary-container);
+    color: var(--on-surface-variant);
 
-    background-color: var(--secondary-container);
+    background-color: var(--surface-variant);
   }
 
   dialog {
@@ -53,18 +53,23 @@ import { Icon } from 'astro-icon/components'
     height: calc(100dvh - 8rem);
     border-radius: 0.5rem;
 
-    color: var(--on-secondary-container);
+    color: var(--on-surface);
 
-    background-color: var(--secondary-container);
+    background-color: var(--surface);
   }
 </style>
 
 <style is:global>
   #search {
-    --pagefind-ui-primary: var(--on-primary-container);
-    --pagefind-ui-background: var(--secondary-container);
-    --pagefind-ui-text: var(--on-secondary-container);
+    /* main */
+    --pagefind-ui-background: var(--surface);
+    --pagefind-ui-text: var(--on-surface);
+
+    /* outside border */
     --pagefind-ui-border: var(--outline);
+
+    /* "load next" buttton text */
+    --pagefind-ui-primary: var(--on-primary-container);
     --pagefind-ui-tag: var(--tertiary-container);
   }
 </style>
