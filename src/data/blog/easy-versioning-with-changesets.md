@@ -102,6 +102,7 @@ https://github.com/changesets/changesets/blob/main/docs/config-file-options.md#c
 7. まだリリースはされていません、リリースするためにはリリース用の PR(Version Packages)をマージします。
 
 これでリリースまで完成です、npm と GitHub の release に追加されているはずです。
+
 :::message
 **7** の PR をマージする前に **6** までを繰り返してから **7** の PR をマージすると一気にリリースが可能です。
 :::

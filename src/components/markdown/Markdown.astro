@@ -3,7 +3,7 @@ import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
 import Element from './node/Element.astro'
-import { remarkDirective } from './plugins/remarkDirective'
+import remarkFlexibleContainers from 'remark-flexible-containers'
 import { remarkLinkCard } from './plugins/remarkLinkCard'
 
 interface Props {
@@ -11,7 +11,19 @@ interface Props {
 }
 const { content } = Astro.props
 
-const prosessor = unified().use(remarkParse).use(remarkGfm).use(remarkDirective).use(remarkLinkCard)
+const prosessor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkFlexibleContainers, {
+    title: () => null,
+    containerProperties(type, title) {
+      return {
+        type,
+        title,
+      }
+    },
+  })
+  .use(remarkLinkCard)
 
 const parsed = await prosessor.parse(content)
 const root = await prosessor.run(parsed)

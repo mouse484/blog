@@ -4,10 +4,10 @@ import Heading from './Heading.astro'
 import Code from './Code.astro'
 import List from './list/List.astro'
 import ListItem from './list/ListItem.astro'
-import Directive from './Directive.astro'
 import HTML from './HTML.astro'
 import Link from './link/Link.astro'
 import LinkCard from './link/LinkCard.astro'
+import Container from './Container.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -73,8 +73,8 @@ const { nodes } = Astro.props
         )
       case 'thematicBreak':
         return <hr />
-      case 'directive':
-        return <Directive node={node} />
+      case 'container':
+        return <Container node={node} />
       case 'html':
         return <HTML node={node} />
       default:
