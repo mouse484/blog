@@ -1,15 +1,14 @@
 ---
-import type { Directive } from 'mdast'
 import { Icon } from 'astro-icon/components'
 import Element from './Element.astro'
+import type { RootContentMap } from 'mdast'
+
+type Container = RootContentMap['container']
 
 interface Props {
-  node: Directive
+  node: Container
 }
 const { node } = Astro.props
-
-const type = node.name as keyof typeof list
-const title = node.title ?? type
 
 const list = {
   message: {
@@ -22,6 +21,11 @@ const list = {
   },
 } satisfies {
   [key: string]: { color: string; icon: string }
+}
+
+const { type, title } = node.data?.hProperties as {
+  type: keyof typeof list
+  title?: string
 }
 
 const options = list[type] ?? list['message']
