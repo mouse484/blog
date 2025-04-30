@@ -2,7 +2,8 @@
 title: Mac OSでCLIからゴミ箱にファイルを移動する
 tags:
   - Mac
-createdAt: 2026-04-12
+  - Terminal
+createdAt: 2025-04-12
 ---
 
 # 要約
