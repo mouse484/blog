@@ -12,7 +12,8 @@
     "get:style": "cd src/styles && curl -O https://raw.githubusercontent.com/mouse484/portfolio/refs/heads/next/src/lib/styles/theme.css",
     "cli": "tsx bin/cli",
     "prepare": "husky",
-    "test": "vitest"
+    "test": "vitest",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.11",
