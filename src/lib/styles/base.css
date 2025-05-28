@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+}
+
+body {
+  color: var(--color-on-surface);
+  background-color: var(--color-surface);
+}
+
+a {
+  color: var(--primary-fixed-dim);
+}
+
+a:visited {
+  color: var(--primary-fixed);
+}

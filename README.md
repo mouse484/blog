@@ -1,1 +1,1 @@
-# [mouse blog]()
+# [mouse blog](https://blog.mousedev.page)

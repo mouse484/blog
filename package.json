@@ -11,16 +11,20 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "lint:css": "stylelint \"src/**/*.{css,svelte}\"",
+    "get-thema-css": "cd src/lib/styles && curl -O https://raw.githubusercontent.com/mouse484/portfolio/refs/heads/main/src/lib/styles/theme.css"
   },
   "devDependencies": {
     "@mouse_484/eslint-config": "4.3.0",
+    "@mouse_484/stylelint-config": "^1.1.1",
     "@sveltejs/adapter-auto": "^6.0.0",
     "@sveltejs/kit": "^2.16.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "eslint": "^9.27.0",
     "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-svelte": "^3.8.2",
+    "stylelint": "^16.19.1",
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.0",
     "svelte-eslint-parser": "^1.2.0",

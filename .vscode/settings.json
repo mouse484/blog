@@ -6,6 +6,7 @@
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit",
     "source.organizeImports": "never"
   },
 
@@ -47,5 +48,10 @@
     "scss",
     "pcss",
     "postcss"
+  ],
+  "stylelint.validate": [
+    "css",
+    "postcss",
+    "svelte"
   ]
 }
