@@ -42,7 +42,7 @@
     "mdast": "3.0.0",
     "prettier-plugin-astro": "0.14.1",
     "remark-frontmatter": "5.0.0",
-    "stylelint": "16.21.0",
+    "stylelint": "16.21.1",
     "tsx": "4.20.3",
     "unist-util-select": "5.1.0",
     "vitest": "3.2.4",
