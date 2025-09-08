@@ -31,7 +31,7 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
-    "@mouse_484/eslint-config": "5.2.8",
+    "@mouse_484/eslint-config": "5.2.9",
     "@mouse_484/stylelint-config": "1.1.5",
     "astro-eslint-parser": "1.2.2",
     "commander": "14.0.0",
@@ -42,7 +42,7 @@
     "mdast": "3.0.0",
     "prettier-plugin-astro": "0.14.1",
     "remark-frontmatter": "5.0.0",
-    "stylelint": "16.23.1",
+    "stylelint": "16.24.0",
     "tsx": "4.20.5",
     "unist-util-select": "5.1.0",
     "vitest": "3.2.4",
