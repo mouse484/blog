@@ -35,7 +35,7 @@
     "@mouse_484/stylelint-config": "1.1.6",
     "astro-eslint-parser": "1.2.2",
     "commander": "14.0.2",
-    "eslint": "9.39.0",
+    "eslint": "9.39.1",
     "eslint-plugin-astro": "1.4.0",
     "eslint-plugin-format": "1.0.2",
     "husky": "9.1.7",
