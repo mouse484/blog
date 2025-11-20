@@ -1,6 +1,6 @@
 ---
-import PageFindSearch from 'astro-pagefind/components/Search'
 import { Icon } from 'astro-icon/components'
+import PageFindSearch from 'astro-pagefind/components/Search'
 ---
 
 <button>
@@ -9,7 +9,10 @@ import { Icon } from 'astro-icon/components'
 
 <dialog>
   <div>
-    <PageFindSearch id="search" uiOptions={{ autofocus: true, showImages: false, showSubResults: true }} />
+    <PageFindSearch
+      id="search"
+      uiOptions={{ autofocus: true, showImages: false, showSubResults: true }}
+    />
   </div>
 </dialog>
 

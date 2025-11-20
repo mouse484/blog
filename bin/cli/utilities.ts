@@ -14,20 +14,18 @@ export const baseFromtmatter = YAML.stringify({
   createdAt: TODAY,
 })
 
-export async function getExistingSlugs(dir: string) {
-  const items = await fs.readdir(dir, { withFileTypes: true })
+export async function getExistingSlugs(directory: string) {
+  const items = await fs.readdir(directory, { withFileTypes: true })
   const slugs = await Promise.all(items.flatMap(async (item) => {
     if (item.isDirectory()) {
-      const indexPath = path.join(dir, item.name, 'index.md')
+      const indexPath = path.join(directory, item.name, 'index.md')
       try {
         await fs.stat(indexPath)
         return item.name
-      }
-      catch {
+      } catch {
         return []
       }
-    }
-    else if (item.isFile() && item.name.endsWith('.md')) {
+    } else if (item.isFile() && item.name.endsWith('.md')) {
       return item.name.replace('.md', '')
     }
     return []

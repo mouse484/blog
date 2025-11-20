@@ -1,11 +1,12 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
-import { isDev } from '../const'
+import { isDevelopment } from '../const'
 
 export const GET: APIRoute = async (context) => {
-  const blog = (await getCollection('blog'))
-    .sort((a, b) => {
+  const blogCollection = await getCollection('blog')
+  const blog = blogCollection
+    .toSorted((a, b) => {
       return (a.data.createdAt ?? 0) > (b.data.createdAt ?? 0) ? -1 : 1
     })
     .slice(0, 5)
@@ -15,10 +16,10 @@ export const GET: APIRoute = async (context) => {
       url: new URL(`posts/${post.id}`, context.site).href,
     }))
 
-  return new Response(JSON.stringify(blog), {
+  return Response.json(blog, {
     headers: {
       'content-type': 'application/json',
-      'Access-Control-Allow-Origin': isDev ? '*' : 'https://portfolio.mousedev.page',
+      'Access-Control-Allow-Origin': isDevelopment ? '*' : 'https://portfolio.mousedev.page',
       'Access-Control-Allow-Methods': 'GET',
     },
   })

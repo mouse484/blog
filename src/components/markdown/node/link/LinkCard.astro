@@ -1,6 +1,7 @@
 ---
-import { parse } from 'node-html-parser'
 import type { LinkCard } from 'mdast'
+import { parse } from 'node-html-parser'
+
 interface Props {
   node: LinkCard
 }
@@ -15,7 +16,8 @@ const document = parse(raw)
 const title = document.querySelector('title')?.textContent ?? href
 const origin = new URL(href).origin
 const favicon = document.querySelector('link[rel="icon"]')?.getAttribute('href')
-const description = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? ''
+const description =
+  document.querySelector('meta[name="description"]')?.getAttribute('content') ?? ''
 const image = document.querySelector('meta[property="og:image"]')?.getAttribute('content')
 ---
 
@@ -27,7 +29,12 @@ const image = document.querySelector('meta[property="og:image"]')?.getAttribute(
         {description.slice(0, 100)}
       </p>
       <p class="meta">
-        {favicon && <img src={new URL(favicon, origin).href} class="favicon" alt={`${origin} favicon`} />}
+        {
+          favicon && (
+            <img src={new URL(favicon, origin).href} class="favicon" alt={`${origin} favicon`} />
+          )
+        }
+
         <span>{origin}</span>
       </p>
     </div>

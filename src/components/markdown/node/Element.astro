@@ -1,13 +1,13 @@
 ---
 import type { RootContent } from 'mdast'
-import Heading from './Heading.astro'
 import Code from './Code.astro'
-import List from './list/List.astro'
-import ListItem from './list/ListItem.astro'
-import HTML from './HTML.astro'
+import Container from './Container.astro'
+import Heading from './Heading.astro'
+import HTML from './Html.astro'
 import Link from './link/Link.astro'
 import LinkCard from './link/LinkCard.astro'
-import Container from './Container.astro'
+import List from './list/List.astro'
+import ListItem from './list/ListItem.astro'
 
 interface Props {
   nodes: RootContent[]
@@ -18,67 +18,85 @@ const { nodes } = Astro.props
 {
   nodes.map((node) => {
     switch (node.type) {
-      case 'text':
+      case 'text': {
         const lines = node.value.split('\n')
         return lines.map((line, index) => (
           <Fragment>
             {line} {index < lines.length - 1 && <br />}
           </Fragment>
         ))
-      case 'paragraph':
+      }
+      case 'paragraph': {
         return (
           <p>
             <Astro.self nodes={node.children} />
           </p>
         )
-      case 'link':
+      }
+      case 'link': {
         return <Link node={node} />
-      case 'link-card':
+      }
+      case 'link-card': {
         return <LinkCard node={node} />
-      case 'heading':
+      }
+      case 'heading': {
         return <Heading node={node} />
-      case 'list':
+      }
+      case 'list': {
         return <List node={node} />
-      case 'listItem':
+      }
+      case 'listItem': {
         return <ListItem node={node} />
-      case 'code':
+      }
+      case 'code': {
         return <Code node={node} />
-      case 'inlineCode':
+      }
+      case 'inlineCode': {
         return <code>{node.value}</code>
-      case 'image':
+      }
+      case 'image': {
         return <img src={node.url} alt={node.alt} />
-      case 'blockquote':
+      }
+      case 'blockquote': {
         return (
           <blockquote>
             <Astro.self nodes={node.children} />
           </blockquote>
         )
-      case 'strong':
+      }
+      case 'strong': {
         return (
           <strong>
             <Astro.self nodes={node.children} />
           </strong>
         )
-      case 'emphasis':
+      }
+      case 'emphasis': {
         return (
           <em>
             <Astro.self nodes={node.children} />
           </em>
         )
-      case 'delete':
+      }
+      case 'delete': {
         return (
           <del>
             <Astro.self nodes={node.children} />
           </del>
         )
-      case 'thematicBreak':
+      }
+      case 'thematicBreak': {
         return <hr />
-      case 'container':
+      }
+      case 'container': {
         return <Container node={node} />
-      case 'html':
+      }
+      case 'html': {
         return <HTML node={node} />
-      default:
+      }
+      default: {
         return JSON.stringify(node)
+      }
     }
   })
 }

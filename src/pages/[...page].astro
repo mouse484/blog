@@ -1,9 +1,9 @@
 ---
 import type { GetStaticPaths } from 'astro'
-import Layout from '../layouts/Layout.astro'
-import PostList from '../components/PostList.astro'
 import { getCollection } from 'astro:content'
 import PageNation from '../components/PageNation.astro'
+import PostList from '../components/PostList.astro'
+import Layout from '../layouts/Layout.astro'
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = (await getCollection('blog')).sort((a, b) => {

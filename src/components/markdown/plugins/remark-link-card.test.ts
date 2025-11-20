@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { remarkLinkCard } from './remarkLinkCard'
-import { createFind } from './utils'
+import { remarkLinkCard } from './remark-link-card'
+import { createFind } from './utilities'
 
 const find = createFind(remarkLinkCard, 'link-card')
 

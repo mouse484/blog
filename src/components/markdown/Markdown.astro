@@ -1,10 +1,10 @@
 ---
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkGfm from 'remark-gfm'
-import Element from './node/Element.astro'
 import remarkFlexibleContainers from 'remark-flexible-containers'
-import { remarkLinkCard } from './plugins/remarkLinkCard'
+import remarkGfm from 'remark-gfm'
+import remarkParse from 'remark-parse'
+import { unified } from 'unified'
+import Element from './node/Element.astro'
+import { remarkLinkCard } from './plugins/remark-link-card'
 
 interface Props {
   content: string

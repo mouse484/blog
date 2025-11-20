@@ -1,22 +1,17 @@
-// Import necessary types and functions
 import type { LinkCard, Root } from 'mdast'
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 
-// Add the LinkCard type to the mdast module
 declare module 'mdast' {
-   // Define LinkCard type: same as Link but with type 'link-card'
-   type LinkCard = Omit<Link, 'type'> & {
-     type: 'link-card'
-   }
+  type LinkCard = Omit<Link, 'type'> & {
+    type: 'link-card'
+  }
 
-   // Add LinkCard to the content map
-   interface RootContentMap {
-     'link-card': LinkCard
-   }
+  interface RootContentMap {
+    'link-card': LinkCard
+  }
 }
 
-// Plugin that converts single links in paragraphs to link cards
 export const remarkLinkCard: Plugin<[], Root> = () => {
   return (tree) => {
     // Visit each link in the syntax tree

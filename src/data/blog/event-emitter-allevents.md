@@ -1,7 +1,7 @@
 ---
 title: EventEmitter の全てのイベントを取得する方法(Node.js)
 tags:
-  - Node.js
+- Node.js
 createdAt: 2022-01-15
 canonicalUrl: https://zenn.dev/mouse_484/articles/listen-to-all-events-of-eventemitter
 ---
@@ -19,7 +19,8 @@ Node.js の [EventEmitter](https://nodejs.org/api/events.html) は便利なん�
 例:
 
 ```js
-const EventEmitter2 = require('eventemitter2')
+import EventEmitter2 from 'eventemitter2'
+
 const emitter = new EventEmitter2()
 
 emitter.on('*', () => console.log('EventEmitter2'))
@@ -39,9 +40,9 @@ Node.js の EventEmitter を拡張する。
 例:
 
 ```js
-const EventEmitter = require('node:events')
+import EventEmitter from 'node:events'
 
-class ExtendEventEmitter extends EventEmitter {
+class ExtendEventEmitter extends EventTarget {
   emit(name, ...args) {
     return super.emit('*', name, ...args)
   }

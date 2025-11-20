@@ -1,7 +1,7 @@
 ---
+import type { RootContentMap } from 'mdast'
 import { Icon } from 'astro-icon/components'
 import Element from './Element.astro'
-import type { RootContentMap } from 'mdast'
 
 type Container = RootContentMap['container']
 
@@ -28,7 +28,7 @@ const { type, title } = node.data?.hProperties as {
   title?: string
 }
 
-const options = list[type] ?? list['message']
+const options = list[type] ?? list.message
 ---
 
 <aside style={{ '--color': options.color }}>

@@ -1,15 +1,16 @@
+/* eslint-disable unicorn/no-process-exit */
 import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-import { processor } from './markdownProcessor.js'
-import { baseFromtmatter, BLOG_DIRECTORY, getExistingSlugs } from './utils.js'
+import { processor } from './markdown-processor.js'
+import { baseFromtmatter, BLOG_DIRECTORY, getExistingSlugs } from './utilities.js'
 
 export async function createPost(slug: string, options: { directory?: boolean }) {
   const isDirectory = options.directory
   const filePath = isDirectory ? `${slug}/index.md` : `${slug}.md`
   const fullPath = path.join(BLOG_DIRECTORY, filePath)
-  const dirPath = path.dirname(fullPath)
+  const directoryPath = path.dirname(fullPath)
 
   const existingSlugs = await getExistingSlugs(BLOG_DIRECTORY)
   if (existingSlugs.includes(slug)) {
@@ -17,8 +18,8 @@ export async function createPost(slug: string, options: { directory?: boolean })
     process.exit(1)
   }
 
-  await fs.access(dirPath).catch(async () => {
-    await fs.mkdir(dirPath, { recursive: true })
+  await fs.access(directoryPath).catch(async () => {
+    await fs.mkdir(directoryPath, { recursive: true })
   })
 
   const content = `---\n${baseFromtmatter}---\n\n`
@@ -30,12 +31,12 @@ export async function createPost(slug: string, options: { directory?: boolean })
 
 export async function updatePosts() {
   const changedFiles = getChangedFiles()
-  if (!changedFiles.length) {
+  if (changedFiles.length === 0) {
     return console.info('変更はありません')
   }
 
   for (const fullPath of changedFiles) {
-    const content = await fs.readFile(fullPath, 'utf-8')
+    const content = await fs.readFile(fullPath, 'utf8')
     const processed = await processor.process(content)
     await fs.writeFile(fullPath, processed.toString())
   }
