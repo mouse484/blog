@@ -14,17 +14,18 @@ declare module 'mdast' {
 
 export const remarkLinkCard: Plugin<[], Root> = () => {
   return (tree) => {
-    // Visit each link in the syntax tree
     visit(tree, 'link', (node, _, parent) => {
-      // Check if the link is alone in a paragraph
-      if (parent && parent.type === 'paragraph' && parent.children.length === 1) {
-        // Create a link-card node from the link
-        const linkCard: LinkCard = {
-          ...node,
-          type: 'link-card',
-        }
-        // Replace the original link with the link-card
-        Object.assign(node, linkCard)
+      const isAloneInParagraph
+        = parent?.type === 'paragraph'
+          && parent.children.length === 1
+
+      const isBareLink
+        = node.children.length === 1
+          && node.children[0].type === 'text'
+          && node.children[0].value === node.url
+
+      if (isAloneInParagraph && isBareLink) {
+        Object.assign(node, { ...node, type: 'link-card' } satisfies LinkCard)
       }
     })
   }
