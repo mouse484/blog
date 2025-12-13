@@ -1,19 +1,25 @@
 ---
-import { getCollection } from 'astro:content'
+export const prerender = false
+
 import Date from '../../components/elements/Date.astro'
 import Tag from '../../components/elements/Tag.astro'
 import Markdown from '../../components/markdown/Markdown.astro'
 import Layout from '../../layouts/Layout.astro'
+import { getEntry } from 'astro:content'
 import '../../styles/content.css'
 
-export async function getStaticPaths() {
-  const posts = await getCollection('blog')
-  return posts.map((post) => ({
-    params: { id: post.id },
-    props: { post },
-  }))
+const { slug } = Astro.params
+
+if (slug === undefined) {
+  return Astro.redirect('/')
 }
-const { post } = Astro.props
+
+const post = await getEntry('blog', slug)
+
+if (post === undefined) {
+  return Astro.redirect('/')
+}
+
 const content = post.body ?? ''
 ---
 
