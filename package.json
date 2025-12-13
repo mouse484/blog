@@ -16,6 +16,7 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@iconify-json/mdi": "^1.2.3",
