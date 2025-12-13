@@ -11,10 +11,6 @@ import { defineConfig } from 'astro/config'
 export default defineConfig({
   site: 'https://blog.mousedev.page',
 
-  build: {
-    format: 'file',
-  },
-
   integrations: [sitemap(), pagefind(), icon()],
 
   markdown: {
