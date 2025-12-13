@@ -9,7 +9,7 @@ export function createFind(plugin: Plugin<[], Root>, matchType: string) {
   const processor = unified().use(remarkParse).use(remarkGfm).use(plugin)
 
   const find = async (markdown: string) => {
-    const parsed = await processor.parse(markdown)
+    const parsed = processor.parse(markdown)
     const node = await processor.run(parsed)
 
     let found = false

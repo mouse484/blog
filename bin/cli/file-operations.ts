@@ -26,7 +26,7 @@ export async function createPost(slug: string, options: { directory?: boolean })
 
   await fs.writeFile(fullPath, content)
 
-  await execSync(`code ${fullPath}`)
+  return execSync(`code ${fullPath}`)
 }
 
 export async function updatePosts() {
