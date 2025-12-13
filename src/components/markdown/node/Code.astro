@@ -1,7 +1,6 @@
 ---
 import type { Code } from 'mdast'
-import { ExpressiveCode } from 'expressive-code'
-import { toHtml } from 'expressive-code/hast'
+import { baseStyles, ec, themeStyles, toHtml, jsModules } from '../../../utils/syntax-hilight'
 
 interface Props {
   node: Code
@@ -10,12 +9,6 @@ const { node } = Astro.props
 
 const [language = '', filename] = node.lang?.split(':') ?? []
 const content = node.value
-
-const ec = new ExpressiveCode()
-
-const baseStyles = await ec.getBaseStyles()
-const themeStyles = await ec.getThemeStyles()
-const jsModules = await ec.getJsModules()
 
 const { renderedGroupAst, styles: blockStyles } = await ec.render({
   code: content,

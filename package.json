@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler dev",
     "astro": "astro",
     "lint": "eslint .",
     "lint:css": "stylelint '**/*.{astro,css}' --ignore-path .gitignore",
@@ -24,8 +24,8 @@
     "astro-icon": "^1.1.5",
     "astro-pagefind": "^1.8.5",
     "dayjs": "^1.11.19",
+    "dompurify": "^3.3.1",
     "expressive-code": "^0.41.3",
-    "isomorphic-dompurify": "^2.32.0",
     "mdast-util-to-string": "^4.0.0",
     "node-html-parser": "^7.0.1",
     "remark-flexible-containers": "^1.5.2",

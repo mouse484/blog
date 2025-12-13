@@ -13,11 +13,5 @@ export default defineConfig({
 
   integrations: [sitemap(), pagefind(), icon()],
 
-  markdown: {
-    shikiConfig: {
-      theme: 'dracula',
-    },
-  },
-
   adapter: cloudflare(),
 })
