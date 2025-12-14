@@ -3,8 +3,8 @@ import { execSync } from 'node:child_process'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-import { processor } from './markdown-processor.js'
-import { baseFromtmatter, BLOG_DIRECTORY, getExistingSlugs } from './utilities.js'
+import { processor } from './markdown-processor.ts'
+import { baseFromtmatter, BLOG_DIRECTORY, getExistingSlugs } from './utilities.ts'
 
 export async function createPost(slug: string, options: { directory?: boolean }) {
   const isDirectory = options.directory
@@ -26,13 +26,14 @@ export async function createPost(slug: string, options: { directory?: boolean })
 
   await fs.writeFile(fullPath, content)
 
-  return execSync(`code ${fullPath}`)
+  execSync(`code ${fullPath}`)
 }
 
 export async function updatePosts() {
   const changedFiles = getChangedFiles()
   if (changedFiles.length === 0) {
-    return console.info('変更はありません')
+    console.info('変更はありません')
+    return
   }
 
   for (const fullPath of changedFiles) {
