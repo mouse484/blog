@@ -6,7 +6,7 @@ import remarkStringify from 'remark-stringify'
 import { unified } from 'unified'
 import { visit } from 'unist-util-visit'
 import YAML from 'yaml'
-import { TODAY } from './utilities'
+import { TODAY } from './utilities.ts'
 
 const updateYamlPlugin: Plugin = () => {
   return (tree) => {

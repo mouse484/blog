@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-import { createPost, updatePosts } from './file-operations.js'
+import { createPost, updatePosts } from './file-operations.ts'
 
 const program = new Command()
 program.name('blog-util')
