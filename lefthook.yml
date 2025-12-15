@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      run: npx eslint --fix {staged_files}
+      stage_fixed: true
+    lint-css:
+      run: npx stylelint --fix {staged_files}
+      stage_fixed: true
+      glob:
+        - '*.css'
+    update-content:
+      run: npm run cli update && git add src/data/
+      glob:
+        - 'src/data/**/*.md'
