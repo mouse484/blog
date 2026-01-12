@@ -18,7 +18,7 @@
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.1",
     "@iconify-json/mdi": "^1.2.3",
-    "astro": "^5.16.7",
+    "astro": "^5.16.8",
     "astro-icon": "^1.1.5",
     "astro-pagefind": "^1.8.5",
     "dayjs": "^1.11.19",
