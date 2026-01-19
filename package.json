@@ -37,7 +37,7 @@
   "devDependencies": {
     "@mouse_484/eslint-config": "5.8.11",
     "@mouse_484/stylelint-config": "1.1.6",
-    "@types/mdast": "^4.0.4",
+    "@types/mdast": "4.0.4",
     "astro-eslint-parser": "1.2.2",
     "commander": "14.0.2",
     "eslint": "9.39.2",
