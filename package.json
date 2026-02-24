@@ -23,7 +23,7 @@
     "astro-pagefind": "^1.8.5",
     "dayjs": "^1.11.19",
     "expressive-code": "^0.41.6",
-    "isomorphic-dompurify": "^2.36.0",
+    "isomorphic-dompurify": "^3.0.0",
     "mdast-util-to-string": "^4.0.0",
     "node-html-parser": "^7.0.2",
     "remark-flexible-containers": "^1.5.3",
