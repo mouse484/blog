@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 import dayjs from 'dayjs'
-import { isDevelopment } from '../const'
 
 export const GET: APIRoute = async (context) => {
   const blogCollection = await getCollection('blog')
@@ -19,8 +18,6 @@ export const GET: APIRoute = async (context) => {
   return Response.json(blog, {
     headers: {
       'content-type': 'application/json',
-      'Access-Control-Allow-Origin': isDevelopment ? '*' : 'https://portfolio.mousedev.page',
-      'Access-Control-Allow-Methods': 'GET',
     },
   })
 }
