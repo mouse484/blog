@@ -46,7 +46,7 @@
     "lefthook": "2.1.4",
     "prettier-plugin-astro": "0.14.1",
     "remark-frontmatter": "5.0.0",
-    "stylelint": "17.4.0",
+    "stylelint": "17.5.0",
     "vitest": "4.1.0",
     "wrangler": "4.75.0",
     "yaml": "2.8.2"
