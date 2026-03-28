@@ -20,7 +20,7 @@
     "@iconify-json/mdi": "^1.2.3",
     "astro": "^5.18.0",
     "astro-icon": "^1.1.5",
-    "astro-pagefind": "^1.8.5",
+    "astro-pagefind": "^1.8.6",
     "dayjs": "^1.11.20",
     "expressive-code": "^0.41.7",
     "isomorphic-dompurify": "^3.7.1",
