@@ -40,7 +40,7 @@
     "@types/mdast": "4.0.4",
     "astro-eslint-parser": "1.4.0",
     "commander": "14.0.3",
-    "eslint": "10.2.0",
+    "eslint": "10.2.1",
     "eslint-plugin-astro": "1.7.0",
     "eslint-plugin-format": "2.0.1",
     "lefthook": "2.1.6",
