@@ -21,7 +21,7 @@
     "astro": "^6.3.7",
     "astro-icon": "^1.1.5",
     "astro-pagefind": "^1.8.6",
-    "dayjs": "^1.11.20",
+    "dayjs": "^1.11.21",
     "expressive-code": "^0.42.0",
     "isomorphic-dompurify": "^3.14.0",
     "mdast-util-to-string": "^4.0.0",
