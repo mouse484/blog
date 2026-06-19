@@ -47,7 +47,7 @@
     "prettier-plugin-astro": "0.14.1",
     "remark-frontmatter": "5.0.0",
     "stylelint": "17.13.0",
-    "vitest": "4.1.8",
+    "vitest": "4.1.9",
     "wrangler": "4.100.0",
     "yaml": "2.9.0"
   }
