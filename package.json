@@ -25,7 +25,7 @@
     "expressive-code": "^0.43.1",
     "isomorphic-dompurify": "^3.18.0",
     "mdast-util-to-string": "^4.0.0",
-    "node-html-parser": "^7.1.0",
+    "node-html-parser": "^8.0.3",
     "remark-flexible-containers": "^1.5.5",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",
