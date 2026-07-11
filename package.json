@@ -35,7 +35,7 @@
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
-    "@mouse_484/eslint-config": "5.10.42",
+    "@mouse_484/eslint-config": "5.10.43",
     "@mouse_484/stylelint-config": "1.1.13",
     "@types/mdast": "4.0.4",
     "astro-eslint-parser": "2.1.0",
