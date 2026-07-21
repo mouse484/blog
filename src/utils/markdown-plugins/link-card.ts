@@ -15,18 +15,27 @@ export const linkCardPlugin = defineMdastPlugin({
     if ((firstChild).value !== link.url) return
 
     const href = link.url
+    let origin: string | undefined
+    try {
+      origin = new URL(href).origin
+    } catch {
+      // invalid or relative link — fall through to render basic card
+    }
+
     let title = href
     let description = ''
     let faviconUrl: string | undefined
     let ogImageUrl: string | undefined
 
     try {
-      const response = await fetch(href)
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 5000)
+      const response = await fetch(href, { signal: controller.signal })
+      clearTimeout(timeoutId)
       const raw = await response.text()
       const document = parse(raw)
 
       title = document.querySelector('title')?.textContent ?? href
-      const origin = new URL(href).origin
       const faviconHref = document.querySelector('link[rel="icon"]')?.getAttribute('href')
       description
         = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? ''
@@ -37,10 +46,8 @@ export const linkCardPlugin = defineMdastPlugin({
       if (faviconHref !== undefined) faviconUrl = new URL(faviconHref, origin).href
       if (imageContent !== undefined) ogImageUrl = new URL(imageContent, origin).href
     } catch {
-      // fetch failed, render basic card
+      // fetch failed or invalid URL, render basic card
     }
-
-    const origin = new URL(href).origin
 
     const faviconImg = faviconUrl === undefined
       ? ''
@@ -56,7 +63,7 @@ export const linkCardPlugin = defineMdastPlugin({
       <p class="description">${description.slice(0, 100)}</p>
       <p class="meta">
         ${faviconImg}
-        <span>${origin}</span>
+        <span>${origin ?? ''}</span>
       </p>
     </div>
     ${ogImage}
