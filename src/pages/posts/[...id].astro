@@ -1,10 +1,9 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import Date from '../../components/elements/Date.astro'
 import Tag from '../../components/elements/Tag.astro'
-import Markdown from '../../components/markdown/Markdown.astro'
 import Layout from '../../layouts/Layout.astro'
-import '../../styles/content.css'
+import MarkdownLayout from '../../layouts/MarkdownLayout.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
@@ -14,7 +13,7 @@ export async function getStaticPaths() {
   }))
 }
 const { post } = Astro.props
-const content = post.body ?? ''
+const { Content } = await render(post)
 ---
 
 <Layout pageTitle={post.data.title}>
@@ -40,9 +39,9 @@ const content = post.body ?? ''
         </aside>
       )
     }
-    <section>
-      <Markdown content={content} />
-    </section>
+    <MarkdownLayout>
+      <Content />
+    </MarkdownLayout>
   </article>
 </Layout>
 
@@ -51,6 +50,11 @@ const content = post.body ?? ''
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  article > div {
+    display: flex;
+    gap: 0.5rem;
   }
 
   aside {

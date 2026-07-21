@@ -6,4 +6,13 @@ export default mouse({
   typescript: {
     tsconfigPath: 'tsconfig.json',
   },
+}, {
+  rules: {
+    'unicorn/filename-case': [
+      'error',
+      {
+        ignore: ['src'],
+      },
+    ],
+  },
 })

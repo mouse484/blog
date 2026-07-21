@@ -1,0 +1,187 @@
+<section>
+  <slot />
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    line-height: 2;
+    overflow-wrap: break-word;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  section :global(code) {
+    user-select: all;
+
+    margin: 0 0.2rem;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+
+    color: var(--on-secondary-container);
+
+    background-color: var(--secondary-container);
+  }
+
+  section :global(blockquote) {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid #ccc;
+    font-style: italic;
+  }
+
+  section :global(strong) {
+    font-weight: bold;
+  }
+
+  section :global(del) {
+    text-decoration: line-through;
+  }
+
+  section :global(hr) {
+    margin: 1rem 0;
+    border-top: 1px solid var(--outline-variant);
+  }
+
+  section :global(ul),
+  section :global(ol) {
+    padding-left: 1.5em;
+  }
+
+  section :global(ul) {
+    list-style-type: disc;
+  }
+
+  section :global(ol) {
+    list-style-type: decimal;
+  }
+
+  section :global(li)::marker {
+    color: var(--on-surface-variant);
+  }
+
+  section :global(h1) {
+    font-size: 1.6rem;
+  }
+
+  section :global(h2) {
+    font-size: 1.5rem;
+  }
+
+  section :global(h3) {
+    font-size: 1.4rem;
+  }
+
+  section :global(h4) {
+    font-size: 1.3rem;
+  }
+
+  section :global(h5) {
+    font-size: 1.2rem;
+  }
+
+  section :global(h6) {
+    font-size: 1.1rem;
+  }
+
+  section :global(h2) a,
+  section :global(h3) a,
+  section :global(h4) a,
+  section :global(h5) a,
+  section :global(h6) a,
+  section :global(h2) a:visited,
+  section :global(h3) a:visited,
+  section :global(h4) a:visited,
+  section :global(h5) a:visited,
+  section :global(h6) a:visited {
+    color: var(--on-surface-variant);
+  }
+
+  section :global(aside[class^='container-']) {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid var(--color);
+    border-radius: 0.5em;
+
+    font-size: 0.95em;
+  }
+
+  section :global(aside[class^='container-'] > .header) {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  section :global(aside[class^='container-'] > .header > .icon) {
+    flex-shrink: 0;
+    width: 1.5em;
+    height: 1.5em;
+    color: var(--color);
+  }
+
+  section :global(aside[class^='container-'] > div) {
+    padding-left: 0.5rem;
+  }
+
+  section :global(.link-card > a) {
+    display: flex;
+    height: 8rem;
+    border: 1px solid var(--outline);
+    border-radius: 0.5rem;
+  }
+
+  section :global(.link-card > a > div) {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    flex: 1;
+
+    min-width: 0;
+    padding: 1em;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  section :global(.link-card:hover > a > div) {
+    background-color: color-mix(in srgb, var(--surface), #fff 5%);
+  }
+
+  section :global(.link-card p) {
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  section :global(.link-card p:not(:first-of-type)) {
+    font-size: 0.7rem;
+  }
+
+  section :global(.link-card .meta) {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  section :global(.link-card .favicon) {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  section :global(.link-card .og-image) {
+    width: auto;
+    height: 100%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    object-fit: cover;
+  }
+</style>
