@@ -21,6 +21,7 @@ describe('container', () => {
     it('with title', () => {
       const html = getContainerHtml(':::message\nTitle\n\ncontent\n:::')
       expect(html).toContain('container-message')
+      expect(html).toContain('>Title<')
     })
 
     it('without title', () => {

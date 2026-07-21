@@ -22,7 +22,6 @@ export const containerMdastPlugin = defineMdastPlugin({
   name: 'container-mdast',
   containerDirective(node, context) {
     const name = node.name
-    const icon = iconMap[name] ?? 'mdi:message-alert'
     const color = colorMap[name] ?? 'var(--primary)'
 
     let title = ''
@@ -38,14 +37,17 @@ export const containerMdastPlugin = defineMdastPlugin({
     }
 
     context.setProperty(node, 'children', children)
+    const hProperties: Record<string, string> = {
+      class: `container-${name}`,
+      style: `--color: ${color};`,
+    }
+    if (title) {
+      hProperties['data-title'] = title
+    }
+
     context.setProperty(node, 'data', {
       hName: 'aside',
-      hProperties: {
-        class: `container-${name}`,
-        style: `--color: ${color};`,
-      },
-      containerTitle: title,
-      containerIcon: icon,
+      hProperties,
     })
   },
 })
@@ -60,24 +62,33 @@ export const containerHastPlugin = defineHastPlugin({
 
       const containerType = className.replace('container-', '')
       const iconName = iconMap[containerType] ?? 'mdi:message-alert'
-      const iconBody = getIconBody(iconName)
+      const containerTitle = (node.properties['data-title'] as string) ?? ''
+      if (containerTitle) {
+        delete node.properties['data-title']
+      }
 
       const children = [...node.children]
 
       const headerChildren: object[] = []
-      if (iconBody) {
-        headerChildren.push({
-          type: 'element',
-          tagName: 'svg',
-          properties: {
-            xmlns: 'http://www.w3.org/2000/svg',
-            width: 24,
-            height: 24,
-            viewBox: '0 0 24 24',
-            class: 'icon',
-          },
-          children: [{ type: 'raw', value: iconBody }],
-        })
+      if (iconName) {
+        const iconBody = getIconBody(iconName)
+        if (iconBody) {
+          headerChildren.push({
+            type: 'element',
+            tagName: 'svg',
+            properties: {
+              xmlns: 'http://www.w3.org/2000/svg',
+              width: 24,
+              height: 24,
+              viewBox: '0 0 24 24',
+              class: 'icon',
+            },
+            children: [{ type: 'raw', value: iconBody }],
+          })
+        }
+      }
+      if (containerTitle) {
+        headerChildren.push({ type: 'text', value: containerTitle })
       }
 
       const newChildren: object[] = []
