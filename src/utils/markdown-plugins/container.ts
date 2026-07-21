@@ -29,10 +29,12 @@ export const containerMdastPlugin = defineMdastPlugin({
 
     if (children.length > 0 && children[0].type === 'paragraph') {
       const firstChild = children[0]
-      const [child] = firstChild.children
-      if (child?.type === 'text' && firstChild.children.length === 1) {
-        title = child.value
-        children.shift()
+      if (firstChild.data?.directiveLabel) {
+        const [child] = firstChild.children
+        if (child?.type === 'text' && firstChild.children.length === 1) {
+          title = child.value
+          children.shift()
+        }
       }
     }
 
@@ -81,7 +83,7 @@ export const containerHastPlugin = defineHastPlugin({
               width: 24,
               height: 24,
               viewBox: '0 0 24 24',
-              class: 'icon',
+              className: ['icon'],
             },
             children: [{ type: 'raw', value: iconBody }],
           })
@@ -96,7 +98,7 @@ export const containerHastPlugin = defineHastPlugin({
         newChildren.push({
           type: 'element',
           tagName: 'span',
-          properties: { class: 'header' },
+          properties: { className: ['header'] },
           children: headerChildren,
         })
       }
