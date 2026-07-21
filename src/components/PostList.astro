@@ -15,14 +15,14 @@ const sortedPosts = posts.sort((a, b) => {
 
 <ul transition:animate="fade" data-pagefind-ignore>
   {
-    sortedPosts.map((post) => (
+    sortedPosts.map(post => (
       <li>
         <Date post={post} />
         <a href={`/posts/${post.id}`} transition:name={post.id}>
           {post.data.title}
         </a>
         <div>
-          {post.data.tags?.map((tag) => (
+          {post.data.tags?.map(tag => (
             <Tag tag={tag} />
           ))}
         </div>

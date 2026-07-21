@@ -20,7 +20,7 @@ export default {
     proxy: true,
   },
   proxy: {
-    '/api/': 'http://api.example.com',
+    '/api/': 'https://api.example.com',
   }
 }
 ```
@@ -46,13 +46,13 @@ export default {
 ```js
 export default {
   proxy: {
-    '/api1/': 'http://example.com',
+    '/api1/': 'https://example.com',
     '/api2/': {
-      target: 'http://example.com',
+      target: 'https://example.com',
       pathRewrite: { '^/api/': '' }
     },
     '/api3/': {
-      target: 'http://example.com',
+      target: 'https://example.com',
       pathRewrite: { '^/api/': '/' }
     },
   }

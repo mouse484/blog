@@ -11,22 +11,26 @@ const { page } = Astro.props
 
 <div>
   {
-    page.url.first ? (
+    page.url.first
+? (
       <a href={page.url.first} aria-label="最初のページ">
         <Icon name="mdi:chevron-double-left" />
       </a>
-    ) : (
+    )
+: (
       <span>
         <Icon name="mdi:chevron-double-left" />
       </span>
     )
   }
   {
-    page.url.prev ? (
+    page.url.prev
+? (
       <a href={page.url.prev} aria-label="前のページ">
         <Icon name="mdi:chevron-left" />
       </a>
-    ) : (
+    )
+: (
       <span>
         <Icon name="mdi:chevron-left" />
       </span>
@@ -34,22 +38,26 @@ const { page } = Astro.props
   }
   <span>{page.currentPage}</span>
   {
-    page.url.next ? (
+    page.url.next
+? (
       <a href={page.url.next} aria-label="次のページ">
         <Icon name="mdi:chevron-right" />
       </a>
-    ) : (
+    )
+: (
       <span>
         <Icon name="mdi:chevron-right" />
       </span>
     )
   }
   {
-    page.url.last ? (
+    page.url.last
+? (
       <a href={page.url.last} aria-label="最後のページ">
         <Icon name="mdi:chevron-double-right" />
       </a>
-    ) : (
+    )
+: (
       <span>
         <Icon name="mdi:chevron-double-right" />
       </span>
