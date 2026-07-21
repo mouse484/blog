@@ -25,7 +25,8 @@ export async function getExistingSlugs(directory: string) {
       } catch {
         return []
       }
-    } else if (item.isFile() && item.name.endsWith('.md')) {
+    }
+    if (item.isFile() && item.name.endsWith('.md')) {
       return item.name.replace('.md', '')
     }
     return []
