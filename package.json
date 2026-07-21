@@ -48,7 +48,7 @@
     "remark-frontmatter": "5.0.0",
     "stylelint": "17.14.0",
     "vitest": "4.1.10",
-    "wrangler": "4.111.0",
+    "wrangler": "4.112.0",
     "yaml": "2.9.0"
   }
 }
