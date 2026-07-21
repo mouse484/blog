@@ -55,8 +55,12 @@ export const linkCardPlugin = defineMdastPlugin({
       if (faviconHref !== undefined) faviconUrl = new URL(faviconHref, origin).href
       if (imageContent !== undefined) ogImageUrl = new URL(imageContent, origin).href
     } catch {
-      // fetch failed or invalid URL, render basic card
+      // fetch failed or invalid URL
     }
+
+    const hasDescription = description.trim() !== ''
+    const hasOgImage = ogImageUrl !== undefined
+    if (!hasDescription && !hasOgImage) return
 
     const faviconImg = faviconUrl === undefined
       ? ''
@@ -79,6 +83,6 @@ export const linkCardPlugin = defineMdastPlugin({
   </a>
 </div>`
 
-    return { raw: rawHtml, mdxExpressions: false }
+    return { rawHtml }
   },
 })
