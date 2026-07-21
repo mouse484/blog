@@ -30,12 +30,10 @@ export const containerMdastPlugin = defineMdastPlugin({
 
     if (children.length > 0 && children[0].type === 'paragraph') {
       const firstChild = children[0]
-      if (firstChild.type === 'paragraph') {
-        const [child] = firstChild.children
-        if (child?.type === 'text' && firstChild.children.length === 1) {
-          title = child.value
-          children.shift()
-        }
+      const [child] = firstChild.children
+      if (child?.type === 'text' && firstChild.children.length === 1) {
+        title = child.value
+        children.shift()
       }
     }
 
