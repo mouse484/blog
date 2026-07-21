@@ -12,7 +12,7 @@ createdAt: 2025-04-12
 trash <file/directory>
 ```
 
-# 詳細
+## 詳細
 
 これまでは、brewでインストールできる`rmtrash`や`trash`もしくは、[macos-trash](https://github.com/sindresorhus/macos-trash)を使っていた。
 
@@ -71,6 +71,6 @@ HISTORY
 macOS                    May 25, 2022                    macOS
 ```
 
-# 参考
+## 参考
 
 https://github.com/sindresorhus/macos-trash/issues/26

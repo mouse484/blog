@@ -50,7 +50,7 @@ https://github.com/apps/changeset-bot
 リンクから GitHub に追加してください。
 この Bot は PR に以下のようなメッセージをつけて Changesets で変更がされているかされていないかを返信するので必要なリポジトリのみにすることをおすすめします。
 
-![](https://user-images.githubusercontent.com/38714187/209133509-98a1c71d-08c1-49b4-a25b-e2283fb8a180.png)
+![Changesets bot message](https://user-images.githubusercontent.com/38714187/209133509-98a1c71d-08c1-49b4-a25b-e2283fb8a180.png)
 
 > Changesets 側の更新フラグが無いよっていう画像
 
@@ -88,7 +88,7 @@ yarn add -D @changesets/changelog-github
 
 https://github.com/changesets/changesets/blob/main/docs/config-file-options.md#changelog-false-or-a-path
 
-# 実際に使う
+## 実際に使う
 
 ここまでで設定は終わりです。
 実際のリリースの手順です。
@@ -107,7 +107,7 @@ https://github.com/changesets/changesets/blob/main/docs/config-file-options.md#c
 **7** の PR をマージする前に **6** までを繰り返してから **7** の PR をマージすると一気にリリースが可能です。
 :::
 
-#### 他人のコードまたは先にコミットしてしまった場合
+## 他人のコードまたは先にコミットしてしまった場合
 
 - まだ PR まではしてない場合
   - そのまま`.changeset/*`にマークダウンを作成してコミットすればいいです。(自分の環境なら `yarn changeset` でいい)
@@ -115,7 +115,7 @@ https://github.com/changesets/changesets/blob/main/docs/config-file-options.md#c
   - changeset-bot のメッセージの一番下にあるリンクから GitHub 上で作成できる。
   - (`Click here if you're a maintainer who wants to add a changeset to this PR`)
 
-# 最後に
+## 最後に
 
 semantic-release のモノレポ対応が悪くて探しているなかで turborepo がおすすめしていたので使ってみたら案外便利でした。
 見やすいドキュメントが無いので手間取りましたが一度設定してしまえば楽に使えます。

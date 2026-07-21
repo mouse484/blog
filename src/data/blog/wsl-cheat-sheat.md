@@ -8,7 +8,7 @@ canonicalUrl: https://zenn.dev/mouse_484/articles/wsl-cheat-sheat
 
 # コマンド編
 
-### 一覧表示
+## 一覧表示
 
 ```sh
 wsl -l -v
@@ -81,7 +81,7 @@ wsl --set-version <ディストリビューション> <バージョン 1 or 2>
 
 https://learn.microsoft.com/ja-jp/windows/wsl/basic-commands
 
-# Docker (not desktop)
+## Docker (not desktop)
 
 ### Ubuntu 20.04
 
@@ -91,7 +91,7 @@ https://zenn.dev/taiga533/articles/11f1b21ef4a5ff
 
 インストールは適当に https://docs.docker.com/engine/install/ubuntu/
 
-##### Docker daemon の起動
+#### Docker daemon の起動
 
 Systemd を PID=1 で使えるようにしないとだめ。
 以下を実行すれば OK。
@@ -108,7 +108,7 @@ https://level69.net/archives/31296
 https://qiita.com/shigeokamoto/items/ca2211567771cf40a90d
 https://zenn.dev/takai404/articles/8088f8688018de#%E5%85%88%E4%BA%BA%E3%81%AE%E7%9F%A5%E6%81%B5
 
-# WSL を別のドライブにする
+## WSL を別のドライブにする
 
 exportしてから移動したいドライブ側importする。
 もっといい方法ほしい。

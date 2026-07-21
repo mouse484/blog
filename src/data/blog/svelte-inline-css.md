@@ -7,14 +7,14 @@ createdAt: 2021-05-18
 canonicalUrl: https://zenn.dev/mouse_484/articles/svelte-inline-css
 ---
 
-# 作ったもの
+## 作ったもの
 
 https://github.com/mouse484/svelte-inline-css
 
 ここで試せます。
 https://svelte.dev/repl/04705a80122e4e4ba8ffd3db1cc3f49e?version=3.38.2
 
-# なんで作ったか
+## なんで作ったか
 
 - 標準でいい感じにインライン CSS が書けなかった
   - 動的に CSS を変更するとしたら結構面倒くさい
@@ -23,7 +23,7 @@ https://svelte.dev/repl/04705a80122e4e4ba8ffd3db1cc3f49e?version=3.38.2
 
 [作った経緯のメモ](https://zenn.dev/mouse_484/scraps/b5306933034466)
 
-# 使い方
+## 使い方
 
 ```
 yarn add svelte-inline-css
@@ -42,7 +42,7 @@ Vue.js とほとんど一緒で CSS プロパティは camelCase を使用しま
 
 Vue.js v3 のドキュメントと全く同じ書き方をした[例](https://github.com/mouse484/svelte-inline-css/blob/main/example/src/App.svelte)があります。
 
-# これから
+## これから
 
 - Vue.js と挙動をほぼ一致させる
   - ~~Array Syntax~~

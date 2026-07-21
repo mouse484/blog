@@ -29,7 +29,7 @@ SvelteKit は Vite 使ってるし Framework としては Svelte だし...と思
 npm i -D vite-plugin-windicss windicss
 ```
 
-# 設定
+## 設定
 
 ```js:vite.config.js
 import { sveltekit } from '@sveltejs/kit/vite'
@@ -61,7 +61,7 @@ export default config
 参考: https://windicss.org/integrations/vite.html#sveltekit-as-of-1-0-0-next-102
 :::
 
-# css を読み込む
+## css を読み込む
 
 ```js:src/routes/+layout.svelte
 <script>
@@ -69,7 +69,7 @@ export default config
 </script>
 ```
 
-### 参考
+## 参考
 
 https://windicss.org/integrations/vite.html#sveltekit-as-of-1-0-0-next-100
 

@@ -22,7 +22,7 @@ ERR_TOO_MANY_REDIRECTS
 Vercelはhttpリクエストを受け取るとhttpsに308でリダイレクトする。
 Cloudflareはhttpをhttpsとしてユーザーに返すが、Vercelでリダイレクトされているため、リダイレクトループが発生する。
 
-##### 参考
+#### 参考
 
 https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/
 
