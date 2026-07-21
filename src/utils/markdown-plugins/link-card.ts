@@ -24,11 +24,13 @@ export const linkCardPlugin = defineMdastPlugin({
     if ((firstChild).value !== link.url) return
 
     const href = link.url
-    let origin: string | undefined
+    let origin: string
     try {
-      origin = new URL(href).origin
+      const url = new URL(href)
+      if (url.protocol !== 'http:' && url.protocol !== 'https:') return
+      origin = url.origin
     } catch {
-      // invalid or relative link — fall through to render basic card
+      return
     }
 
     let title = href
@@ -37,10 +39,10 @@ export const linkCardPlugin = defineMdastPlugin({
     let ogImageUrl: string | undefined
 
     try {
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 5000)
-      const response = await fetch(href, { signal: controller.signal })
-      clearTimeout(timeoutId)
+      const response = await fetch(href, { signal: AbortSignal.timeout(5000) })
+      if (!response.ok) return
+      const contentType = response.headers.get('content-type') ?? ''
+      if (!contentType.includes('text/html') && !contentType.includes('application/xhtml+xml')) return
       const raw = await response.text()
       const document = parse(raw)
 
@@ -64,7 +66,7 @@ export const linkCardPlugin = defineMdastPlugin({
 
     const faviconImg = faviconUrl === undefined
       ? ''
-      : `<img src="${escapeHtml(faviconUrl)}" class="favicon" alt="${escapeHtml(origin ?? '')} favicon" />`
+      : `<img src="${escapeHtml(faviconUrl)}" class="favicon" alt="${escapeHtml(origin)} favicon" />`
     const ogImage = ogImageUrl === undefined
       ? ''
       : `<img class="og-image" src="${escapeHtml(ogImageUrl)}" alt="${escapeHtml(title)} og image" />`
@@ -76,7 +78,7 @@ export const linkCardPlugin = defineMdastPlugin({
       <p class="description">${escapeHtml(description.slice(0, 100))}</p>
       <p class="meta">
         ${faviconImg}
-        <span>${escapeHtml(origin ?? '')}</span>
+        <span>${escapeHtml(origin)}</span>
       </p>
     </div>
     ${ogImage}
