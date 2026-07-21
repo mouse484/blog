@@ -1,9 +1,26 @@
 import { parse } from 'node-html-parser'
 import { markdownToHtml } from 'satteri'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { linkCardPlugin } from './link-card'
 
 vi.mock('node-html-parser')
+
+const defaultHtml = `<html><head>
+  <title>Example Domain</title>
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="description" content="Example description" />
+  <meta property="og:image" content="/og-image.png" />
+</head></html>`
+
+beforeEach(() => {
+  vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+    new Response(defaultHtml, { status: 200, headers: { 'Content-Type': 'text/html' } }),
+  )
+})
+
+afterEach(() => {
+  vi.restoreAllMocks()
+})
 
 function mockParse(options: {
   title?: string
