@@ -22,5 +22,12 @@ export default defineConfig({
       hastPlugins: [containerHastPlugin],
     }),
   },
-  integrations: [sitemap(), pagefind(), icon(), expressiveCode()],
+  integrations: [
+    sitemap(),
+    pagefind(),
+    icon(),
+    expressiveCode({
+      themes: ['dracula'],
+    }),
+  ],
 })
