@@ -1,6 +1,7 @@
 import { rssSchema } from '@astrojs/rss'
 import { glob } from 'astro/loaders'
-import { defineCollection, z } from 'astro:content'
+import { z } from 'astro/zod'
+import { defineCollection } from 'astro:content'
 
 const dateSchema = rssSchema.shape.pubDate
 
@@ -11,11 +12,12 @@ const blog = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
+    // eslint-disable-next-line unicorn/max-nested-calls
     tags: z.array(z.string()).optional(),
     description: z.string().optional(),
     createdAt: dateSchema,
     updatedAt: dateSchema,
-    canonicalUrl: z.string().url().optional(),
+    canonicalUrl: z.url().optional(),
   }),
 })
 
