@@ -18,9 +18,11 @@ export async function createPost(slug: string, options: { directory?: boolean })
     process.exit(1)
   }
 
-  await fs.access(directoryPath).catch(async () => {
+  try {
+    await fs.access(directoryPath)
+  } catch {
     await fs.mkdir(directoryPath, { recursive: true })
-  })
+  }
 
   const content = `---\n${baseFromtmatter}---\n\n`
 
