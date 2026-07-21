@@ -9,11 +9,11 @@ canonicalUrl: https://qiita.com/mouse_484/items/60f3c516d705bac60220
 
 ifreameで埋め込むとき貫通するのを直そうと思ったけどcssじゃ出来なかったのでその時のメモ
 
-# ifreamだと貫通する~~🖕~~
+## ifreamだと貫通する~~🖕~~
 
 ifreamでサイト埋め込んでサイズをでかくするとfloatで貫通するみたいになる。
 
-# 試したこと
+## 試したこと
 
 ## 1. clearFix
 
@@ -29,7 +29,7 @@ clearFixっていうfloatで貫通したときに直せる方法試してみた
 
 できた！！！！！！！！！！！！！！！！！！！！！！！！！！
 
-# Objectの使い方
+## Objectの使い方
 
 ```html
 <object data="url"></object>
@@ -38,6 +38,6 @@ clearFixっていうfloatで貫通したときに直せる方法試してみた
 はい、これだけ
 ifreamのsrcをdataに入れるだけ
 
-# おわりに
+## おわりに
 
 ただのメモを読んでくれてありがとう

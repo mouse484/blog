@@ -20,7 +20,7 @@ File /.../Xcode/DerivedData/.../Build/Products/Release-iphoneos/.../main.jsbundl
   - `Build Phases`->`Copy Bundle Resource`
     - 追加画面の一覧にないので左下の`Add Other…`から`/ios/main.jsbundle`を追加
 
-![](./image.png)
+![Xcode Build Phases](./image.png)
 
 ---
 
