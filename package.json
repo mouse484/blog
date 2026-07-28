@@ -35,7 +35,7 @@
     "@mouse_484/stylelint-config": "1.1.13",
     "@types/mdast": "4.0.4",
     "commander": "15.0.0",
-    "eslint": "10.7.0",
+    "eslint": "10.8.0",
     "eslint-plugin-astro": "3.0.1",
     "eslint-plugin-format": "2.0.1",
     "lefthook": "2.1.10",
