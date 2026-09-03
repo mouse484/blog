@@ -31,7 +31,7 @@
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
-    "@mouse_484/eslint-config": "5.11.14",
+    "@mouse_484/eslint-config": "5.11.15",
     "@mouse_484/stylelint-config": "1.1.16",
     "@types/mdast": "4.0.4",
     "commander": "15.0.0",
