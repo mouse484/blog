@@ -34,7 +34,7 @@
     "@mouse_484/eslint-config": "5.11.37",
     "@mouse_484/stylelint-config": "1.1.16",
     "@types/mdast": "4.0.4",
-    "commander": "15.0.0",
+    "commander": "15.1.0",
     "eslint": "10.13.0",
     "eslint-plugin-astro": "3.2.1",
     "eslint-plugin-format": "2.0.1",
