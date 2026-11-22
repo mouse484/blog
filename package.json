@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.5",
+    "@astrojs/sitemap": "^3.7.6",
     "@iconify-json/mdi": "^1.2.3",
-    "astro": "^7.4.12",
+    "astro": "^7.4.13",
     "astro-expressive-code": "^0.44.3",
     "astro-icon": "^1.2.0",
     "astro-pagefind": "^2.0.1",
